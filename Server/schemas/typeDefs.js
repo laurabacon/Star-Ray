@@ -4,7 +4,6 @@ const typeDefs = `
     name: String
     email: String
     password: String
-    skills: [String]!
   }
 
   type Auth {
