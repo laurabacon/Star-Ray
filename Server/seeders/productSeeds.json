@@ -1,0 +1,176 @@
+[
+  {
+    "type": "candle",
+    "scent": "Baja",
+    "size": "3.5oz yogurt container",
+    "price": 8
+  },
+  {
+    "type": "candle",
+    "scent": "Gin & Cypress",
+    "size": "3.5oz yogurt container",
+    "price": 8
+  },
+  {
+    "type": "candle",
+    "scent": "Mango",
+    "size": "3.5oz yogurt container",
+    "price": 8
+  },
+  {
+    "type": "candle",
+    "scent": "Starfruit",
+    "size": "3.5oz yogurt container",
+    "price": 8
+  },
+  {
+    "type": "candle",
+    "scent": "Yuxu & Hinoki",
+    "size": "3.5oz yogurt container",
+    "price": 8
+  },
+  {
+    "type": "candle",
+    "scent": "Earl Grey",
+    "size": "3.5oz yogurt container",
+    "price": 8
+  },
+  {
+    "type": "candle",
+    "scent": "Fresh cut apple",
+    "size": "3.5oz yogurt container",
+    "price": 8
+  },
+  {
+    "type": "candle",
+    "scent": "Agave",
+    "size": "3.5oz yogurt container",
+    "price": 8
+  },
+  {
+    "type": "candle",
+    "scent": "Pear",
+    "size": "3.5oz yogurt container",
+    "price": 8
+  },
+  {
+    "type": "candle",
+    "scent": "Baja",
+    "size": "7oz yogurt container",
+    "price": 12
+  },
+  {
+    "type": "candle",
+    "scent": "Gin & Cypress",
+    "size": "7oz yogurt container",
+    "price": 12
+  },
+  {
+    "type": "candle",
+    "scent": "Mango",
+    "size": "7oz yogurt container",
+    "price": 12
+  },
+  {
+    "type": "candle",
+    "scent": "Starfruit",
+    "size": "7oz yogurt container",
+    "price": 12
+  },
+  {
+    "type": "candle",
+    "scent": "Yuxu & Hinoki",
+    "size": "7oz yogurt container",
+    "price": 12
+  },
+  {
+    "type": "candle",
+    "scent": "Earl Grey",
+    "size": "7oz yogurt container",
+    "price": 12
+  },
+  {
+    "type": "candle",
+    "scent": "Fresh cut apple",
+    "size": "7oz yogurt container",
+    "price": 12
+  },
+  {
+    "type": "candle",
+    "scent": "Agave",
+    "size": "7oz yogurt container",
+    "price": 12
+  },
+  {
+    "type": "candle",
+    "scent": "Pear",
+    "size": "7oz yogurt container",
+    "price": 12
+  },
+  {
+    "type": "soap",
+    "scent": "pear",
+    "size": "2oz disk",
+    "price": 5
+  },
+  {
+    "type": "soap",
+    "scent": "Mango",
+    "size": "2oz disk",
+    "price": 5
+  },
+  {
+    "type": "soap",
+    "scent": "Starfruit",
+    "size": "2oz disk",
+    "price": 5
+  },
+  {
+    "type": "soap",
+    "scent": "Gin & cypress",
+    "size": "2oz disk",
+    "price": 5
+  },
+  {
+    "type": "soap",
+    "scent": "Starfruit",
+    "size": "2oz disk",
+    "price": 5
+  },
+  {
+    "type": "soap",
+    "scent": "Agave",
+    "size": "2oz disk",
+    "price": 5
+  },
+  {
+    "type": "scrub",
+    "scent": "pear",
+    "price": 15
+  },
+  {
+    "type": "scrub",
+    "scent": "Mango",
+    "price": 15
+  },
+  {
+    "type": "scrub",
+    "scent": "Starfruit",
+    "price": 15
+  },
+  {
+    "type": "scrub",
+    "scent": "Gin & cypress",
+    "price": 15
+  },
+  {
+    "type": "scrub",
+    "scent": "Starfruit",
+    "price": 15
+  },
+  {
+    "type": "scrub",
+    "scent": "Agave",
+    "price": 15
+  }
+]
