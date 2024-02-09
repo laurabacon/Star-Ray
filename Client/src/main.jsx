@@ -6,6 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(<App />);
 
+
 // Render App component
 // ReactDOM.render(
 //   <React.StrictMode>
@@ -13,6 +14,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
 //   </React.StrictMode>,
 //   document.getElementById('root')
 // );
+
 
 // function Header() {
 //   return (
