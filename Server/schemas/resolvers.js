@@ -16,6 +16,17 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
+    getUser: async (parent, { userId }, context) => {
+      try {
+        const user = await User.findById(userId);
+        if (!user) {
+          throw new AuthenticationError("User not found");
+        }
+        return user;
+      } catch (error) {
+        throw new AuthenticationError("Failed to fetch user details");
+      }
+    },
     getProduct: async (parent, { productId }, context) => {
       try {
         const product = await Product.findById(productId);
