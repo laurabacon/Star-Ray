@@ -14,6 +14,7 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
+
 function Header() {
   return (
     <header id="nav">
@@ -96,10 +97,12 @@ function Footer() {
   );
 }
 
+
 ReactDOM.createRoot(document.getElementById('root')).render(
+
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
-)
+  </React.StrictMode>
+);
 
 export default App;
