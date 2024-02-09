@@ -1,13 +1,9 @@
-import React, { useEffect } from 'react';
-
-const Shop = () => {
-  
-
+export default function Shop() {
   return (
     <section>
       <h1>PRODUCTS</h1>
-      <div className="displayCart"></div>
-      <section className="products">
+      {/* <div className="displayCart"></div> */}
+      {/* <section className="products">
         {products.map((product) => (
           <div key={product.id} className="col-md-4">
             <div className={`card ${product.type}`} style={{ width: '18rem' }}>
@@ -20,9 +16,7 @@ const Shop = () => {
             </div>
           </div>
         ))}
-      </section>
+      </section> */}
     </section>
   );
-};
-
-export default Shop;
+}
