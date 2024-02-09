@@ -1,42 +1,42 @@
-const { Profile } = require('../models');
+const { User } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
   Query: {
-    profile: async (parent, args, context) => {
+    user: async (parent, args, context) => {
       if (context.user) {
-        return Profile.findOne({ _id: context.user._id });
+        return User.findOne({ _id: context.user._id });
       }
       throw new AuthenticationError('Not logged in');
     },
     me: async (parent, args, context) => {
         if (context.user) {
-          return Profile.findOne({ _id: context.user._id });
+          return User.findOne({ _id: context.user._id });
         }
         throw AuthenticationError;
     },
   },
   Mutation: {
-    addProfile: async (parent, { name, email, password }) => {
-      const profile = await Profile.create({ name, email, password });
-      const token = signToken(profile);
-      return { token, profile };
+    addUser: async (parent, { name, email, password }) => {
+      const user = await User.create({ name, email, password });
+      const token = signToken(user);
+      return { token, user };
     },
     login: async (parent, { email, password }) => {
-      const profile = await Profile.findOne({ email });
+      const user = await User.findOne({ email });
 
-      if (!profile) {
+      if (!user) {
         throw new AuthenticationError('Incorrect email or password');
       }
 
-      const correctPassword = await profile.isCorrectPassword(password);
+      const correctPassword = await user.isCorrectPassword(password);
 
       if (!correctPassword) {
         throw new AuthenticationError('Incorrect email or password');
       }
 
-      const token = signToken(profile);
-      return { token, profile };
+      const token = signToken(user);
+      return { token, user };
     },
     logout: async (parent, args, context) => {
       if (context.user) {
