@@ -2,11 +2,13 @@ const { User, Product } = require("../models");
 const { signToken, AuthenticationError } = require("../utils/auth");
 const resolvers = {
   Query: {
-    user: async (parent, { id }, context) => {
-      if (context.user) {
-        return User.findOne({ _id: id });
+    user: async (parent, { userId }, context) => {
+      try {
+        const user = await User.findById(userId)
+        return user;
+      } catch (error) {
+        throw new ApolloError('Failed to fetch product details', 'FETCH_PRODUCT_ERROR', { originalError: error });
       }
-      throw new AuthenticationError("Not logged in");
     },
     me: async (parent, args, context) => {
       if (context.user) {
