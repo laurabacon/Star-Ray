@@ -1,7 +1,7 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
+import "./index.css";
 
 function Header() {
   return (
@@ -85,20 +85,20 @@ function Footer() {
   );
 }
 
-function App() {
-  return (
-    <div>
-      <Header />
-      <Main body={<div>Content goes here</div>} /> {}
-      <Footer />
-    </div>
-  );
-}
+// function App() {
+//   return (
+//     <div>
+//       <Header />
+//       <Main body={<div>Content goes here</div>} /> {}
+//       <Footer />
+//     </div>
+//   );
+// }
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
-)
+  </React.StrictMode>
+);
 
 export default App;
