@@ -96,16 +96,6 @@ function Footer() {
   );
 }
 
-function App() {
-  return (
-    <div>
-      <Header />
-      <Main body={<div>Content goes here</div>} /> {}
-      <Footer />
-    </div>
-  );
-}
-
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <App />
