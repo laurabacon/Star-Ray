@@ -146,31 +146,37 @@
   {
     "type": "scrub",
     "scent": "pear",
+    "size": "scrub size?",
     "price": 15
   },
   {
     "type": "scrub",
     "scent": "Mango",
+    "size": "scrub size?",
     "price": 15
   },
   {
     "type": "scrub",
     "scent": "Starfruit",
+    "size": "scrub size?",
     "price": 15
   },
   {
     "type": "scrub",
     "scent": "Gin & cypress",
+    "size": "scrub size?",
     "price": 15
   },
   {
     "type": "scrub",
     "scent": "Starfruit",
+    "size": "scrub size?",
     "price": 15
   },
   {
     "type": "scrub",
     "scent": "Agave",
+    "size": "scrub size?",
     "price": 15
   }
 ]
