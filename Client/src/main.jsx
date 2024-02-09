@@ -1,19 +1,16 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import Cart from './pages/Cart.jsx'
-import ProductsPage from './pages/Shop.jsx'
-import HomePage from '../component/HomePage.jsx'
-import './index.css'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App.jsx';
+import './index.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
+// Render App component
 ReactDOM.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
-
 
 function Header() {
   return (
@@ -57,10 +54,6 @@ function Header() {
   );
 }
 
-// function Main({ body }) {
-//   return <main id="main">{body}</main>;
-// }
-
 function Footer() {
   return (
     <footer className="site-footer">
@@ -96,13 +89,3 @@ function Footer() {
     </footer>
   );
 }
-
-
-ReactDOM.createRoot(document.getElementById('root')).render(
-
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
-
-export default App;
