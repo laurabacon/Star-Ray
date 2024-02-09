@@ -1,52 +1,73 @@
-const { Profile } = require('../models');
+const { User } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
   Query: {
-    profile: async (parent, args, context) => {
+    user: async (parent, args, context) => {
       if (context.user) {
-        return Profile.findOne({ _id: context.user._id });
+        return User.findOne({ _id: context.user._id });
       }
       throw new AuthenticationError('Not logged in');
     },
     me: async (parent, args, context) => {
         if (context.user) {
-          return Profile.findOne({ _id: context.user._id });
+          return User.findOne({ _id: context.user._id });
         }
         throw AuthenticationError;
     },
   },
   Mutation: {
-    addProfile: async (parent, { name, email, password }) => {
-      const profile = await Profile.create({ name, email, password });
-      const token = signToken(profile);
-      return { token, profile };
-    },
-    login: async (parent, { email, password }) => {
-      const profile = await Profile.findOne({ email });
-
-      if (!profile) {
-        throw new AuthenticationError('Incorrect email or password');
+    addUser: async (parent, { name, email, password }) => {
+      try {
+        if (!name || !email || !password) {
+          throw new Error("All fields are required.");
+        }
+        if (password.length < 5) {
+          throw new Error("Password must be at least 5 characters long.");
+        }
+        const user = await User.create({ name, email, password });
+        const token = signToken(user);
+        return { token, user };
+      } catch (error) {
+        throw new Error(error.message);
       }
+    },
 
-      const correctPassword = await profile.isCorrectPassword(password);
+    login: async (parent, { email, password }) => {
+      try {
+        const user = await User.findOne({ email });
+
+        if (!user) {
+          throw new AuthenticationError('Incorrect email or password');
+        }
+
+      const correctPassword = await user.isCorrectPassword(password);
 
       if (!correctPassword) {
         throw new AuthenticationError('Incorrect email or password');
       }
 
-      const token = signToken(profile);
-      return { token, profile };
-    },
-    logout: async (parent, args, context) => {
-      if (context.user) {
-        // Perform any necessary logout actions
-        // For example, you can invalidate the token or remove it from the client-side storage
-        return { message: 'Logged out successfully' };
-      }
-      throw new AuthenticationError('Not logged in');
-    },
+      const token = signToken(user);
+      return { token, user };
+    } catch (error) {
+    throw new Error(error.message);
+    }
   },
-};
+    logout: async (parent, args, context) => {
+      try {
+        if (context.user) {
+          return { message: 'Logged out successfully' };
+        }
+        throw new AuthenticationError('Not logged in');
+      } catch (error) {
+        throw new Error(error.message);
+      }
+    },
+      addProductToCart: async (parent, { productId }, context) => {
+        if (!context.user) {
+          throw new AuthenticationError('You must be logged in to add products to your cart.');
+        }
+      }
+  }};
 
 module.exports = resolvers;
