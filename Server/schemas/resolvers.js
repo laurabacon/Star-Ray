@@ -15,7 +15,27 @@ const resolvers = {
         }
         throw AuthenticationError;
     },
-  },
+    getProduct: async (parent, { productId }, context) => {
+      try {
+        const product = await Product.findById(productId);
+        if (!product) {
+          throw new ApolloError('Product not found', 'PRODUCT_NOT_FOUND');
+        }
+        
+        return product;
+      } catch (error) {
+        throw new ApolloError('Failed to fetch product details', 'FETCH_PRODUCT_ERROR', { originalError: error });
+      }
+    },
+      getAllProducts: async (parent, args, context) => {
+        try {
+          const products = await Product.find();
+          return products;
+        } catch (error) {
+          throw new ApolloError('Failed to fetch products', 'FETCH_PRODUCTS_ERROR', { originalError: error });
+        }
+      },
+    },
   Mutation: {
     addUser: async (parent, { name, email, password }) => {
       try {
