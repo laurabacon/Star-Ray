@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Row, Col, Card, CardImg } from "react-bootstrap";
-import lgCandle from "../../assets/lgCandle.jpg";
+import lgCandle from "../../assets/hero.png";
+import createPic from "../../assets/logo.jpg";
 
 const styles = {
   container: {
@@ -15,7 +16,6 @@ const styles = {
     marginBottom: "20px",
   },
   heroBody: {
-    margin: "0",
     height: "100%",
     display: "flex",
     justifyContent: "center",
@@ -35,6 +35,7 @@ const styles = {
   },
   eventCard: {
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)", 
+    padding: "20px",
     borderRadius: "15px", 
     overflow: "hidden", 
     marginBottom: "20px",
@@ -75,20 +76,16 @@ export default function Home() {
         </Col>
       </Row>
 
-      <Row className="mt-3 creator-card">
-        <Col md={8}>
+      <Row className="creator-card">
+        <Col>
           <Card style={styles.card}>
-            <Card.Body style={styles.cardBody}>
+            <Card.Body>
               <Row>
                 <Col md={3}>
-                  <img
-                    src="path/to/creator-image.jpg"
-                    className="rounded-circle"
-                    alt="Brand Creator"
-                  />
+                <Card.Img src={createPic}/>
                 </Col>
                 <Col md={9}>
-                  <Card.Text>
+                  <Card.Text style={styles.heroBody}>
                     Current products include Soy Wax Candles, Goat Milk Soaps,
                     and Himalayan Salt Scrubs. View the shop page to view my
                     entire selection.
@@ -100,8 +97,8 @@ export default function Home() {
         </Col>
       </Row>
 
-      <Row className="mt-3 upcoming-events-card">
-        <Col md={8}>
+      <Row className="upcoming-events-card">
+        <Col>
           <Card style={styles.eventCard}>
             <Card.Body style={styles.cardBody}>
               <Row>
