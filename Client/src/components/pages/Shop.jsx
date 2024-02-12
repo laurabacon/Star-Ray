@@ -5,7 +5,6 @@ import { QUERY_PRODUCTS } from "../../utils/queries";
 export default function Shop() {
   const { loading, data } = useQuery(QUERY_PRODUCTS);
   const products = data?.getAllProducts || [];
-  
 
   return (
     <div>
