@@ -1,22 +1,33 @@
+import React from "react";
+import { useQuery } from "@apollo/client";
+import { QUERY_PRODUCTS } from "../../utils/queries";
+
 export default function Shop() {
+  const { loading, data } = useQuery(QUERY_PRODUCTS);
+  const products = data?.getAllProducts || [];
+  
+
   return (
-    <section>
+    <div>
       <h1>PRODUCTS</h1>
-      {/* <div className="displayCart"></div> */}
-      {/* <section className="products">
-        {products.map((product) => (
-          <div key={product.id} className="col-md-4">
-            <div className={`card ${product.type}`} style={{ width: '18rem' }}>
-              <img src={product.image} className="card-img-top" alt="..." />
-              <div className="card-body">
-                <p className="card-text">{`${product.scent} - ${product.size}`}</p>
-                <p>${product.price}</p>
-                <button data-id={product.id} id="cartAdd" className="btn btn-primary">Add to cart</button>
+      <main>
+        <div>
+          <div>
+            {loading ? (
+              <div>Loading...</div>
+            ) : (
+              <div>
+                <h2>All Scents:</h2>
+                <ul>
+                  {products.map((product) => (
+                    <li key={product._id}>{product.scent}</li>
+                  ))}
+                </ul>
               </div>
-            </div>
+            )}
           </div>
-        ))}
-      </section> */}
-    </section>
+        </div>
+      </main>
+    </div>
   );
 }

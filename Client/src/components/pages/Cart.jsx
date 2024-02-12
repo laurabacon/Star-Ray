@@ -1,3 +1,4 @@
+
 import {
   MDBBtn,
   MDBCard,
@@ -28,6 +29,11 @@ const Cart = () => {
 
     window.location.href = mailtoLink;
   };
+
+
+
+
+export default function Cart() {
 
   return (
     <div>
