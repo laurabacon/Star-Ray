@@ -1,9 +1,43 @@
-import React from "react";
+
+import {
+  MDBBtn,
+  MDBCard,
+  MDBCardBody,
+  MDBCardImage,
+  MDBCardText,
+  MDBCol,
+  MDBContainer,
+  MDBIcon,
+  MDBInput,
+  MDBRow,
+  MDBTypography,
+  } from "mdb-react-ui-kit";
+import React from 'react';
+import { Button } from 'react-bootstrap';
+
+const Cart = () => {
+  const handleCheckout = () => {
+    const email = 'Email@email.com'; //needs Halden's moms's email
+    const subject = 'Order Request';
+    const body = 'You would like to order:';
+
+    // Create a mailto link
+    const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`;
+
+
+    window.location.href = mailtoLink;
+  };
+
+
+
 
 export default function Cart() {
+
   return (
     <div>
-      <h1>cart Page</h1>
+      <h1>Cart Page</h1>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque
         velit, lobortis ut magna varius, blandit rhoncus sem. Morbi lacinia nisi
@@ -16,6 +50,11 @@ export default function Cart() {
         vitae lorem tortor. In elementum ultricies tempus. Interdum et malesuada
         fames ac ante ipsum primis in faucibus.
       </p>
+      <Button variant="primary" onClick={handleCheckout}>
+        Checkout
+      </Button>
     </div>
   );
-}
+};
+
+export default Cart;

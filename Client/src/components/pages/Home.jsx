@@ -69,26 +69,6 @@ export default function Home() {
         </Col>
       </Row>
 
-      <Row className="mt-3 upcoming-events-card" style={{ width: "100%" }}>
-        <Col md={8}>
-          <Card>
-            <Card.Body>
-              <Row>
-                <Col md={6}>
-                  <h5>Check out our upcoming events!</h5>
-                  <Card.Text>Event 1: Date and Location</Card.Text>
-                  <Card.Text>Event 2: Date and Location</Card.Text>
-                  <Card.Text>Event 3: Date and Location</Card.Text>
-                  <Card.Text>Event 4: Date and Location</Card.Text>
-                </Col>
-                <Col md={6}>
-                  <Card.Img src="path/to/event-image.jpg" />
-                </Col>
-              </Row>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-    </Container>
+
   );
 }
