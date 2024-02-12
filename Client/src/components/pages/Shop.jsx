@@ -5,14 +5,10 @@ import { QUERY_PRODUCTS } from "../../utils/queries";
 export default function Shop() {
   const { loading, data } = useQuery(QUERY_PRODUCTS);
   const products = data?.getAllProducts || [];
-  
 
   return (
     <div>
       <h1>PRODUCTS</h1>
-<<<<<<< HEAD
-    </section>
-=======
       <main>
         <div>
           <div>
@@ -32,6 +28,5 @@ export default function Shop() {
         </div>
       </main>
     </div>
->>>>>>> main
   );
 }
