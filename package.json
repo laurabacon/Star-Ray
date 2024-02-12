@@ -14,15 +14,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-<<<<<<< HEAD
     "concurrently": "^5.3.0"
   },
   "dependencies": {
     "bootstrap": "^5.3.2",
     "react-bootstrap": "^2.10.1",
-=======
-    "concurrently": "^5.3.0",
->>>>>>> main
     "sass": "^1.70.0"
   }
 }
