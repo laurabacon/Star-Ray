@@ -68,7 +68,6 @@ export default function Home() {
           </Card>
         </Col>
       </Row>
-
-
+    </Container>
   );
 }
