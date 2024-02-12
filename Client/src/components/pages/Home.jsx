@@ -1,75 +1,89 @@
-// import React, { useEffect } from 'react';
-// import Granim from 'granim';
-
-
-// const HomePage = () => {
-//   const displayHomepage = async (event) => {
-//     event.preventDefault();
-//     try {
-//       const response = await fetch("/", {
-//         method: "GET",
-//       });
-//       console.log("home button works");
-//       if (response.ok) {
-//         document.location.replace("/");
-//       } else {
-//         alert("Failed to Load Homepage");
-//       }
-//     } catch (error) {
-//       console.error("Error:", error);
-//       alert("Failed to Load Homepage");
-//     }
-//   };
-
-
-//   useEffect(() => {
-//     var granimInstance = new Granim({
-//       element: "#canvas-basic",
-//       direction: "left-right",
-//       isPausedWhenNotInView: true,
-//       states: {
-//         "default-state": {
-//           gradients: [
-//             ["#fbf8cc", "#fde4cf"],
-//             ["#ffcfd2", "#f1c0e8"],
-//             ["#cfbaf0", "#a3c4f3"],
-//             ["#90dbf4", "#8eecf5"],
-//             ["#98f5e1", "#b9fbc0"],
-//           ],
-//           transitionSpeed: 7000,
-//         },
-//       },
-//     });
-//   }, []);
-
-//   return (
-//     <>
-     
-//       <button id="home-button" onClick={displayHomepage}>Home</button>
-    
-//     </>
-//   );
-// };
-
-// export default HomePage;
+import React from 'react';
+import { Container, Row, Col, Card } from 'react-bootstrap';
 
 
 export default function Home() {
   return (
-    <div>
-      <h1>Home Page</h1>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque
-        velit, lobortis ut magna varius, blandit rhoncus sem. Morbi lacinia nisi
-        ac dui fermentum, sed luctus urna tincidunt. Etiam ut feugiat ex. Cras
-        non risus mi. Curabitur mattis rutrum ipsum, ut aliquet urna imperdiet
-        ac. Sed nec nulla aliquam, bibendum odio eget, vestibulum tortor. Cras
-        rutrum ligula in tincidunt commodo. Morbi sit amet mollis orci, in
-        tristique ex. Donec nec ornare elit. Donec blandit est sed risus feugiat
-        porttitor. Vestibulum molestie hendrerit massa non consequat. Vestibulum
-        vitae lorem tortor. In elementum ultricies tempus. Interdum et malesuada
-        fames ac ante ipsum primis in faucibus.
-      </p>
-    </div>
+    <Container style={{ height: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+      <Row className='mt-5 hero-product-card' style={{ width: '100%' }}>
+        <Col md={8}>
+          <Card style={{ height: '100%' }}>
+            <Row noGutters>
+              <Col md={4}>
+                <Card.Img src="path/to/hero-image.jpg" />
+              </Col>
+              <Col md={8}>
+                <Card.Body>
+                  <Card.Text>
+                  Welcome!
+                  </Card.Text>
+                  <Card.Text>
+                  Indulge your senses with lavish, natural products
+                  that soothe your soul.
+                  </Card.Text>
+                </Card.Body>
+              </Col>
+            </Row>
+          </Card>
+        </Col>
+      </Row>
+
+      <Row className='mt-4 grainium-card' style={{ width: '100%' }}>
+        <Col>
+          <blockquote className="blockquote">
+            <p className="mb-0">There is nothing more beautiful than a handmade gift.”</p>
+            <footer className="mt-1 blockquote-footer">Unknown Author</footer>
+          </blockquote>
+        </Col>
+      </Row>
+
+      <Row className="mt-3 grainium-quote-card" style={{ width: '100%' }}>
+        <Col md={8}>
+          <Card>
+            <Card.Body>
+              <Row>
+                <Col md={3}>
+                  <img src="path/to/creator-image.jpg" className="rounded-circle" alt="Brand Creator" />
+                </Col>
+                <Col md={9}>
+                  <Card.Text>
+                  Current products include Soy Wax Candles, Goat Milk Soaps, and Himilayan Salt Scrubs. view the shop page to view my entire selection.
+                  </Card.Text>
+                </Col>
+              </Row>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+
+      <Row className='mt-3 upcoming-events-card' style={{ width: '100%' }}>
+        <Col md={8}>
+          <Card>
+            <Card.Body>
+              <Row>
+                <Col md={6}>
+                  <h5>Check out our upcoming events!</h5>
+                  <Card.Text>
+                    Event 1: Date and Location
+                  </Card.Text>
+                  <Card.Text>
+                    Event 2: Date and Location
+                  </Card.Text>
+                  <Card.Text>
+                    Event 3: Date and Location
+                  </Card.Text>
+                  <Card.Text>
+                    Event 4: Date and Location
+                  </Card.Text>
+                </Col>
+                <Col md={6}>
+                  <Card.Img src="path/to/event-image.jpg" />
+                </Col>
+              </Row>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
   );
 }
