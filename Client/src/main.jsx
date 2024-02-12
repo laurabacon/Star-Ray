@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // import React from 'react';
 import ReactDOM from "react-dom/client";
 import App from "./App";
@@ -6,91 +7,50 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import './custom.scss';
 
 ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+=======
+import { createRoot } from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+>>>>>>> main
 
+import "bootstrap/dist/css/bootstrap.min.css";
+import './custom.scss';
 
-// Render App component
-// ReactDOM.render(
-//   <React.StrictMode>
-//     <App />
-//   </React.StrictMode>,
-//   document.getElementById('root')
-// );
+import App from "./App";
+import Home from "./components/pages/Home";
+import Shop from "./components/pages/Shop";
+// import Login from "./components/pages/Login";
+import Cart from "./components/pages/Cart";
 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    errorElement: <Error />,
+    children: [
+      {
+        index: true,
+        element: <Home />,
+      },
+      {
+        path: "/Home",
+        element: <Home />,
+      },
+      {
+        path: "/Shop",
+        element: <Shop />,
+      },
+    //   {
+    //     path: "/Login",
+    //     element: <Login />,
+    //   },
+      {
+        path: "/Cart",
+        element: <Cart />,
+      },
+    ],
+  },
+]);
 
-// function Header() {
-//   return (
-//     <header id="nav">
-//       <nav className="navbar navbar-expand-lg bg-body-tertiary">
-//         <div className="container-fluid">
-//           <h1 className="title">STAR RAY DESIGN</h1>
-//           <button
-//             className="navbar-toggler"
-//             type="button"
-//             data-bs-toggle="collapse"
-//             data-bs-target="#navbarNav"
-//             aria-controls="navbarNav"
-//             aria-expanded="false"
-//             aria-label="Toggle navigation"
-//           >
-//             <span className="navbar-toggler-icon"></span>
-//           </button>
-//           <div className="collapse navbar-collapse" id="navbarNav">
-//             <ul className="navbar-nav">
-//               <li className="nav-item">
-//                 <a className="nav-link active" id="home-button" href="#">
-//                   Home
-//                 </a>
-//               </li>
-//               <li className="nav-item">
-//                 <a className="nav-link" id="shop-button" href="#">
-//                   Shop
-//                 </a>
-//               </li>
-//               <li className="nav-item">
-//                 <a className="nav-link" id="cart-button" href="#">
-//                   My Cart
-//                 </a>
-//               </li>
-//             </ul>
-//           </div>
-//         </div>
-//       </nav>
-//     </header>
-//   );
-// }
-
-// function Footer() {
-//   return (
-//     <footer className="site-footer">
-//       <div className="container">
-//         <div className="row">
-//           <div className="col-sm-12 col-md-6">
-//             <h6>Contact Us</h6>
-//             <p className="text-justify">
-//               Lorem Ipsum is simply dummy text of the printing and typesetting
-//               industry. Lorem Ipsum has been the industry's standard dummy text
-//               ever since the 1500s, when an unknown printer took a galley of
-//               type and scrambled it to make a type specimen book.
-//             </p>
-//           </div>
-//           <div className="col-6 col-md-3">
-//             <h6>Quick Links</h6>
-//             <ul id="footer-list">
-//               <li>
-//                 <a href="#" id="shop-footer">
-//                   Shop
-//                 </a>
-//               </li>
-//               <li>
-//                 <a href="#" id="cart-footer">
-//                   My Cart
-//                 </a>
-//               </li>
-//             </ul>
-//           </div>
-//         </div>
-//         <hr />
-//       </div>
-//     </footer>
-//   );
-// }
+createRoot(document.getElementById("root")).render(
+  <RouterProvider router={router} />
+);

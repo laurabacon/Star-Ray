@@ -1,8 +1,15 @@
-# React + Vite
+TODO 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+redirected when item is added to cart
+login page/create acc page
 
-Currently, two official plugins are available:
+get data to shop page
+filters on shop page
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+add items to cart
+
+checkout 
+
+HTML for all pages
+CSS for all
+

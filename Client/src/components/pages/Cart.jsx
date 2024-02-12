@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 
+=======
+import React from "react";
+>>>>>>> main
 
 export default function Cart() {
   return (
