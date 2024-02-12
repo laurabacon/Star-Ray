@@ -1,50 +1,37 @@
-// import React, { useEffect, useState } from 'react';
+import {
+  MDBBtn,
+  MDBCard,
+  MDBCardBody,
+  MDBCardImage,
+  MDBCardText,
+  MDBCol,
+  MDBContainer,
+  MDBIcon,
+  MDBInput,
+  MDBRow,
+  MDBTypography,
+  } from "mdb-react-ui-kit";
+import React from 'react';
+import { Button } from 'react-bootstrap';
 
-// const Cart = () => {
-//   const [cartItems, setCartItems] = useState([]);
+const Cart = () => {
+  const handleCheckout = () => {
+    const email = 'Email@email.com'; //needs Halden's moms's email
+    const subject = 'Order Request';
+    const body = 'You would like to order:';
 
-//   useEffect(() => {
-//     const fetchCartItems = async () => {
-//       const cartData = JSON.parse(localStorage.getItem("cartData")) || [];
-//       const fetchedItems = [];
+    // Create a mailto link
+    const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`;
 
-//       for (let i = 0; i < cartData.length; i++) {
-//         const id = cartData[i].cartId;
-//         const response = await fetch(`/cart/${id}`);
-//         const item = await response.json();
-//         fetchedItems.push(item);
-//       }
 
-//       setCartItems(fetchedItems);
-//     };
+    window.location.href = mailtoLink;
+  };
 
-//     fetchCartItems();
-//   }, []);
-
-//   return (
-//     <div id="cart-template cartContainer">
-//       {cartItems.map((item) => (
-//         <div key={item.id} className="col-md-4">
-//           <div className={`card ${item.type}`} style={{ width: '18rem' }}>
-//             <img src={item.image} className="card-img-top" alt="..." />
-//             <div className="card-body">
-//               <p className="card-text">{`${item.scent} - ${item.size}`}</p>
-//               <p>${item.price}</p>
-//               <button className="btn btn-primary">Remove from cart</button>
-//             </div>
-//           </div>
-//         </div>
-//       ))}
-//     </div>
-//   );
-// };
-
-// export default Cart;
-
-export default function Cart() {
   return (
     <div>
-      <h1>cart Page</h1>
+      <h1>Cart Page</h1>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque
         velit, lobortis ut magna varius, blandit rhoncus sem. Morbi lacinia nisi
@@ -57,6 +44,11 @@ export default function Cart() {
         vitae lorem tortor. In elementum ultricies tempus. Interdum et malesuada
         fames ac ante ipsum primis in faucibus.
       </p>
+      <Button variant="primary" onClick={handleCheckout}>
+        Checkout
+      </Button>
     </div>
   );
-}
+};
+
+export default Cart;
