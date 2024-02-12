@@ -1,35 +1,21 @@
-// import {
-//   MDBBtn,
-//   MDBCard,
-//   MDBCardBody,
-//   MDBCardImage,
-//   MDBCardText,
-//   MDBCol,
-//   MDBContainer,
-//   MDBIcon,
-//   MDBInput,
-//   MDBRow,
-//   MDBTypography,
-// } from "mdb-react-ui-kit";
-import React from "react";
-// import { Button } from "react-bootstrap";
+import React from 'react';
+import { Button } from 'react-bootstrap';
 
-// const Cart = () => {
-//   const handleCheckout = () => {
-//     const email = "Email@email.com"; //needs Halden's moms's email
-//     const subject = "Order Request";
-//     const body = "You would like to order:";
+const CartSomething = () => {
+  const handleCheckout = () => {
+    const email = 'Email@email.com';
+    const subject = 'New Order';
+    const body = 'Requested items';
 
-//     // Create a mailto link
-//     const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(
-//       subject
-//     )}&body=${encodeURIComponent(body)}`;
+    // Create a mailto link
+    const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`;
 
-//     window.location.href = mailtoLink;
-//   };
-// };
+  
+    window.location.href = mailtoLink;
+  };
 
-export default function Cart() {
   return (
     <div>
       <h1>Cart Page</h1>
@@ -45,9 +31,11 @@ export default function Cart() {
         vitae lorem tortor. In elementum ultricies tempus. Interdum et malesuada
         fames ac ante ipsum primis in faucibus.
       </p>
-      {/* <Button variant="primary" onClick={handleCheckout}>
+      <Button variant="primary" onClick={handleCheckout}>
         Checkout
-      </Button> */}
+      </Button>
     </div>
   );
-}
+};
+
+export default CartSomething;
