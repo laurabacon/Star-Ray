@@ -10,6 +10,9 @@ export default function Shop() {
   return (
     <div>
       <h1>PRODUCTS</h1>
+<<<<<<< HEAD
+    </section>
+=======
       <main>
         <div>
           <div>
@@ -29,5 +32,6 @@ export default function Shop() {
         </div>
       </main>
     </div>
+>>>>>>> main
   );
 }
