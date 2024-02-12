@@ -1,31 +1,62 @@
 import React from "react";
-import { Container, Row, Col, Card } from "react-bootstrap";
+import { Container, Row, Col, Card, CardImg } from "react-bootstrap";
+import lgCandle from "../../assets/lgCandle.jpg";
+
+const styles = {
+  container: {
+    maxWidth: "1200px",
+    margin: "0 auto",
+    padding: "20px",
+  },
+  card: {
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+    borderRadius: "15px",
+    overflow: "hidden",
+    marginBottom: "20px",
+  },
+  heroBody: {
+    margin: "0",
+    height: "100%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#f8f9fa",
+  },
+  cardBody: {
+    backgroundColor: "#f8f9fa",
+    padding: "20px",
+  },
+  blockquote: {
+    backgroundColor: "#f8f9fa",
+    padding: "20px",
+    borderRadius: "15px", 
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)", 
+    marginBottom: "20px",
+  },
+  eventCard: {
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)", 
+    borderRadius: "15px", 
+    overflow: "hidden", 
+    marginBottom: "20px",
+  },
+};
 
 export default function Home() {
   return (
-    <Container
-      style={{
-        height: "100vh",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Row className="mt-5 hero-product-card" style={{ width: "100%" }}>
-        <Col md={8}>
-          <Card style={{ height: "100%" }}>
+    <Container style={styles.container}>
+      <Row className="hero-product-card">
+        <Col>
+          <Card style={styles.card}>
             <Row>
-              <Col md={4}>
-                <Card.Img src="path/to/hero-image.jpg" />
+              <Col>
+              <Card.Img src={lgCandle}/>
               </Col>
-              <Col md={8}>
-                <Card.Body>
-                  <Card.Text>Welcome!</Card.Text>
-                  <Card.Text>
+              <Col md={6}>
+                <Card.Body style={styles.heroBody}>
+                  <Card.Title style={styles.heroBody}>
                     Indulge your senses with lavish, natural products that
                     soothe your soul.
-                  </Card.Text>
+                  </Card.Title>
                 </Card.Body>
               </Col>
             </Row>
@@ -33,9 +64,9 @@ export default function Home() {
         </Col>
       </Row>
 
-      <Row className="mt-4 grainium-card" style={{ width: "100%" }}>
+      <Row className="mt-4 grainium-card">
         <Col>
-          <blockquote className="blockquote">
+          <blockquote className="blockquote" style={styles.blockquote}>
             <p className="mb-0">
               There is nothing more beautiful than a handmade gift.”
             </p>
@@ -44,10 +75,10 @@ export default function Home() {
         </Col>
       </Row>
 
-      <Row className="mt-3 grainium-quote-card" style={{ width: "100%" }}>
+      <Row className="mt-3 creator-card">
         <Col md={8}>
-          <Card>
-            <Card.Body>
+          <Card style={styles.card}>
+            <Card.Body style={styles.cardBody}>
               <Row>
                 <Col md={3}>
                   <img
@@ -59,9 +90,30 @@ export default function Home() {
                 <Col md={9}>
                   <Card.Text>
                     Current products include Soy Wax Candles, Goat Milk Soaps,
-                    and Himilayan Salt Scrubs. view the shop page to view my
+                    and Himalayan Salt Scrubs. View the shop page to view my
                     entire selection.
                   </Card.Text>
+                </Col>
+              </Row>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+
+      <Row className="mt-3 upcoming-events-card">
+        <Col md={8}>
+          <Card style={styles.eventCard}>
+            <Card.Body style={styles.cardBody}>
+              <Row>
+                <Col md={6}>
+                  <h5>Check out our upcoming events!</h5>
+                  <Card.Text>Event 1: Date and Location</Card.Text>
+                  <Card.Text>Event 2: Date and Location</Card.Text>
+                  <Card.Text>Event 3: Date and Location</Card.Text>
+                  <Card.Text>Event 4: Date and Location</Card.Text>
+                </Col>
+                <Col md={6}>
+                  <Card.Img src="path/to/event-image.jpg" />
                 </Col>
               </Row>
             </Card.Body>

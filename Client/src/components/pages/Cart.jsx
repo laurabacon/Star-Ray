@@ -1,4 +1,38 @@
-import React from 'react';
+
+
+// import {
+//   MDBBtn,
+//   MDBCard,
+//   MDBCardBody,
+//   MDBCardImage,
+//   MDBCardText,
+//   MDBCol,
+//   MDBContainer,
+//   MDBIcon,
+//   MDBInput,
+//   MDBRow,
+//   MDBTypography,
+// } from "mdb-react-ui-kit";
+import React from "react";
+// import { Button } from "react-bootstrap";
+
+// const Cart = () => {
+//   const handleCheckout = () => {
+//     const email = "Email@email.com"; //needs Halden's moms's email
+//     const subject = "Order Request";
+//     const body = "You would like to order:";
+
+//     // Create a mailto link
+//     const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(
+//       subject
+//     )}&body=${encodeURIComponent(body)}`;
+
+//     window.location.href = mailtoLink;
+//   };
+// };
+
+export default function Cart() {
+
 //import { Button } from 'react-bootstrap';
 import {
   MDBBtn,
@@ -26,6 +60,7 @@ const CartSomething = () => {
 
     window.location.href = mailtoLink;
   };
+
 
   return (
     <section className="h-100 h-custom" style={{ backgroundColor: '#eee' }}>
