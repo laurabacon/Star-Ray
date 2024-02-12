@@ -7,6 +7,7 @@ const typeDefs = `
   }
   type Product {
     _id: ID
+    productType: String
     scent: String
     size: String
     price: String
@@ -33,12 +34,3 @@ const typeDefs = `
   }
 `;
 module.exports = typeDefs;
-
-
-
-
-
-
-
-
-

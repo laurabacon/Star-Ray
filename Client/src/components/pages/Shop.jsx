@@ -16,10 +16,12 @@ export default function Shop() {
               <div>Loading...</div>
             ) : (
               <div>
-                <h2>All Scents:</h2>
                 <ul>
                   {products.map((product) => (
-                    <li key={product._id}>{product.scent}</li>
+                    <li key={product._id}>
+                      {product.scent}, {product.price}, {product.productType}
+                      {product.size}
+                    </li>
                   ))}
                 </ul>
               </div>
