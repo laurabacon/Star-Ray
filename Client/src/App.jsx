@@ -1,5 +1,17 @@
-import AppContainer from "./components/AppContainer";
+import { Outlet } from "react-router-dom";
+import NavTabs from "./components/NavTabs";
+// import Footer from "./components/Footer";
 
-const App = () => <AppContainer />;
+function App() {
+  return (
+    <>
+      <main className="mx-3">
+        <NavTabs />
+        <Outlet />
+        {/* <Footer /> */}
+      </main>
+    </>
+  );
+}
 
 export default App;
