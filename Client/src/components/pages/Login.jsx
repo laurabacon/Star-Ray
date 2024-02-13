@@ -20,7 +20,8 @@ function Login() {
       const token = data?.login?.token;
 
       if (token) {
-        // Redirect or perform actions upon successful login
+        // Store the token in local storage
+        localStorage.setItem("id_token", token);
         console.log("Login successful");
       } else {
         alert("Failed to login");
