@@ -1,66 +1,153 @@
-import React from "react";
-import { Container, Row, Col, Card } from "react-bootstrap";
+import React, { useEffect } from "react";
+import Granim from 'granim';
+import { Container, Row, Col, Card, CardImg, CardText } from "react-bootstrap";
+import lgCandle from "../../assets/hero.png";
+import createPic from "../../assets/logo.jpg";
+import craftFair from "../../assets/craft.png";
+
+const styles = {
+  container: {
+    margin: "0 auto",
+    border: "none",
+    padding: "5px",
+    position: "relative",
+  },
+  col: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    textAlign: "center",
+  },
+  card: {
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+    overflow: "hidden",
+    border: "none",
+  },
+  image:{
+    width: '75%', 
+    height: 'auto',
+  },
+  heroCard: {
+    overflow: "hidden",
+    border: "none",
+  },
+  brandCard: {
+    height: "100%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#F4F2ED",
+    border: "none",
+    padding: 0,
+  },
+  brandCardBody: {
+    backgroundColor: "#F4F2ED",
+    border: "none",
+    padding: 0,
+  },
+  cardBody: {
+    backgroundColor: "#f8f9fa",
+    border: "none",
+    padding: 0,
+  },
+  blockquote: {
+    padding: "20px",
+    border: "none",
+    position: "relative",
+    zIndex: 1,
+  },
+  eventCard: {
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)", 
+    border: "none",
+    borderRadius: "15px", 
+    overflow: "hidden", 
+  },
+  eventCardBody: {
+    height: "100%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#F4F2ED",
+    border: "none",
+    padding: 0,
+  },
+  paddingLeft: {
+    paddingLeft: "40px",
+  },
+  canvas: {
+    position: "absolute",
+    top: "50%", 
+    transform: "translateY(-50%)", 
+    left: 0,
+    width: "100%",
+    height: "30%",
+    zIndex: 0,
+    },
+  
+};
 
 export default function Home() {
+  useEffect(() => {
+    try {
+      var granimInstance = new Granim({
+        element: '#canvas-basic',
+        direction: 'left-right',
+        isPausedWhenNotInView: true,
+        states: {
+          "default-state": {
+            gradients: [
+              ['#ff9966', '#ff5e62'],
+              ['#00F260', '#0575E6'],
+              ['#e1eec3', '#f05053']
+            ]
+          }
+        }
+      });
+    } catch (error) {
+      console.error('Error initializing Granim:', error);
+    }
+  }, []);
+  
   return (
-    <Container
-      style={{
-        height: "100vh",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Row className="mt-5 hero-product-card" style={{ width: "100%" }}>
-        <Col md={8}>
-          <Card style={{ height: "100%" }}>
+    <div style={styles.container}>
+      <Row className="hero-product-card">
+        <Card style={styles.heroCard}>
+          <Card.Body style={{ ...styles.cardBody, padding: '0 !important'}}>
             <Row>
-              <Col md={4}>
-                <Card.Img src="path/to/hero-image.jpg" />
+              <Col style={styles.col}>
+                <Card.Img style={styles.image} src={lgCandle}/>
               </Col>
-              <Col md={8}>
-                <Card.Body>
-                  <Card.Text>Welcome!</Card.Text>
-                  <Card.Text>
-                    Indulge your senses with lavish, natural products that
-                    soothe your soul.
-                  </Card.Text>
-                </Card.Body>
+              <Col style={styles.col}>
+                <h5>
+                  Indulge your senses with lavish, natural products that soothe your soul.
+                </h5>
+                <CardText>Current products include Soy Wax Candles, Goat Milk Soaps, and Himalayan Salt Scrubs. View the shop page to view my entire selection.</CardText>
               </Col>
             </Row>
+            </Card.Body>
           </Card>
-        </Col>
+      </Row>
+      <Row>
+        <canvas id="canvas-basic" style={styles.canvas}></canvas>
+        <blockquote className="blockquote" style={styles.blockquote}>
+          <p style={styles.col}>
+            "There is nothing more beautiful than a handmade gift.”
+          </p>
+          <footer style={styles.col} className="blockquote-footer">Unknown Author</footer>
+        </blockquote>
       </Row>
 
-      <Row className="mt-4 grainium-card" style={{ width: "100%" }}>
+      <Row className="creator-card">
         <Col>
-          <blockquote className="blockquote">
-            <p className="mb-0">
-              There is nothing more beautiful than a handmade gift.”
-            </p>
-            <footer className="mt-1 blockquote-footer">Unknown Author</footer>
-          </blockquote>
-        </Col>
-      </Row>
-
-      <Row className="mt-3 grainium-quote-card" style={{ width: "100%" }}>
-        <Col md={8}>
-          <Card>
-            <Card.Body>
+          <Card style={styles.brandCardBody}>
+            <Card.Body style={{ ...styles.brandCardBody, padding: '0 !important' }}>
               <Row>
                 <Col md={3}>
-                  <img
-                    src="path/to/creator-image.jpg"
-                    className="rounded-circle"
-                    alt="Brand Creator"
-                  />
+                <Card.Img style={styles.paddingLeft} src={createPic}/>
                 </Col>
-                <Col md={9}>
-                  <Card.Text>
-                    Current products include Soy Wax Candles, Goat Milk Soaps,
-                    and Himilayan Salt Scrubs. view the shop page to view my
-                    entire selection.
+                <Col>
+                  <Card.Text style={styles.brandCard}> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto magni voluptates, architecto eos vero quis repellat? Molestiae cupiditate beatae nemo blanditiis repudiandae tempore odio at, in dolor aperiam distinctio quisquam.
                   </Card.Text>
                 </Col>
               </Row>
@@ -68,6 +155,25 @@ export default function Home() {
           </Card>
         </Col>
       </Row>
-    </Container>
+
+      <Row className="upcoming-events-card">
+        <Card style={styles.heroCard}>
+          <Card.Body style={{ ...styles.eventCardBody, padding: '0 !important'}}>
+            <Row>
+              <Col style={styles.col}>
+                <h5>Check out our upcoming events!</h5>
+                  <Card.Text>Event 1: Date and Location</Card.Text>
+                  <Card.Text>Event 2: Date and Location</Card.Text>
+                  <Card.Text>Event 3: Date and Location</Card.Text>
+                  <Card.Text>Event 4: Date and Location</Card.Text>
+                </Col>
+                <Col>
+                <Card.Img style={styles.image} src={craftFair}/>
+                </Col>
+              </Row>
+            </Card.Body>
+          </Card>
+      </Row>
+    </div>
   );
 }

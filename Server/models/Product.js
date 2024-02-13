@@ -1,9 +1,9 @@
 const { Schema, model } = require("mongoose");
 
 const productSchema = new Schema({
-  type: {
+  productType: {
     type: String,
-    required: "You need to leave a thought!",
+    required: true,
   },
   scent: {
     type: String,

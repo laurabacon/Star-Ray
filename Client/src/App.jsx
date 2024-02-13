@@ -1,16 +1,24 @@
+import React from "react";
+import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 import { Outlet } from "react-router-dom";
 import NavTabs from "./components/NavTabs";
-// import Footer from "./components/Footer";
+import Footer from "./components/Footer";
+
+// Initialize Apollo Client
+const client = new ApolloClient({
+  uri: "/graphql",
+  cache: new InMemoryCache(),
+});
 
 function App() {
   return (
-    <>
-      <main className="mx-3">
+    <ApolloProvider client={client}>
+      <main>
         <NavTabs />
         <Outlet />
-        {/* <Footer /> */}
       </main>
-    </>
+      <Footer />
+    </ApolloProvider>
   );
 }
 

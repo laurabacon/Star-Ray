@@ -19,7 +19,7 @@ const CartSomething = () => {
     const subject = 'New Order';
     const body = 'Requested items';
 
-
+    // Create a mailto link
     const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(
       subject
     )}&body=${encodeURIComponent(body)}`;
@@ -46,7 +46,7 @@ const CartSomething = () => {
 
                       <hr className="my-4" />
 
-                      {/* ... (cart items) */}
+                      {/* ... (cart) */}
 
                       <hr className="my-4" />
 
@@ -83,4 +83,5 @@ const CartSomething = () => {
 };
 
 export default CartSomething;
+
 
