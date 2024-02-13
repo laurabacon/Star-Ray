@@ -1,19 +1,26 @@
 // Login.js
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { useMutation } from "@apollo/client";
+import { LOGIN_USER, ADD_USER } from "../../utils/mutations";
 
 function Login() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [loginUser] = useMutation(LOGIN_USER);
+  const [addUser] = useMutation(ADD_USER);
 
   const handleLogin = async () => {
     try {
-      const response = await fetch("/api/user/login", {
-        method: "POST",
-        body: JSON.stringify({ username, password }),
-        headers: { "Content-Type": "application/json" },
+      const { data } = await loginUser({
+        variables: { email, password },
       });
-      if (response.ok) {
-        // Redirect or do something else upon successful login
+
+      const token = data?.login?.token;
+
+      if (token) {
+        // Redirect or perform actions upon successful login
         console.log("Login successful");
       } else {
         alert("Failed to login");
@@ -25,13 +32,14 @@ function Login() {
 
   const handleCreateUser = async () => {
     try {
-      const response = await fetch("/api/user", {
-        method: "POST",
-        body: JSON.stringify({ username, password }),
-        headers: { "Content-Type": "application/json" },
+      const { data } = await addUser({
+        variables: { name, password, email },
       });
-      if (response.ok) {
-        // Redirect or do something else upon successful account creation
+
+      const token = data?.addUser?.token;
+
+      if (token) {
+        // Redirect or perform actions upon successful account creation
         console.log("Account created successfully");
       } else {
         alert("Failed to create account");
@@ -45,9 +53,9 @@ function Login() {
     <div>
       <input
         type="text"
-        placeholder="Username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
+        placeholder="Name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
       />
       <input
         type="password"
@@ -55,6 +63,13 @@ function Login() {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
+      <input
+        type="text"
+        placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+
       <button onClick={handleLogin}>Login</button>
       <button onClick={handleCreateUser}>Create Account</button>
     </div>
