@@ -7,7 +7,7 @@ import "./custom.scss";
 import App from "./App";
 import Home from "./components/pages/Home";
 import Shop from "./components/pages/Shop";
-// import Login from "./components/pages/Login";
+import Login from "./components/pages/Login";
 import Cart from "./components/pages/Cart";
 
 const router = createBrowserRouter([
@@ -28,11 +28,10 @@ const router = createBrowserRouter([
         path: "/Shop",
         element: <Shop />,
       },
-
-      //   {
-      //     path: "/Login",
-      //     element: <Login />,
-      //   },
+      {
+        path: "/Login",
+        element: <Login />,
+      },
       {
         path: "/Cart",
         element: <Cart />,
