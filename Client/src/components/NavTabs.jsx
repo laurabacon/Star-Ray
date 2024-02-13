@@ -12,7 +12,7 @@ function NavTabs() {
   const currentPage = useLocation().pathname;
 
   return (
-    <div className="d-flex align-items-center justify-content-between">
+    <div className="d-flex align-items-center justify-content-between" >
       <div style={styles.paddingLeft}>
         <img
           alt=""

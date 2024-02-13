@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import Granim from 'granim';
 import { Container, Row, Col, Card, CardImg, CardText } from "react-bootstrap";
 import lgCandle from "../../assets/hero.png";
 import createPic from "../../assets/logo.jpg";
@@ -9,6 +10,7 @@ const styles = {
     margin: "0 auto",
     border: "none",
     padding: "5px",
+    position: "relative",
   },
   col: {
     display: "flex",
@@ -30,12 +32,17 @@ const styles = {
     overflow: "hidden",
     border: "none",
   },
-  heroBody: {
+  brandCard: {
     height: "100%",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#f8f9fa",
+    backgroundColor: "#F4F2ED",
+    border: "none",
+    padding: 0,
+  },
+  brandCardBody: {
+    backgroundColor: "#F4F2ED",
     border: "none",
     padding: 0,
   },
@@ -45,10 +52,10 @@ const styles = {
     padding: 0,
   },
   blockquote: {
-    backgroundColor: "#f8f9fa",
     padding: "20px",
-    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)", 
     border: "none",
+    position: "relative",
+    zIndex: 1,
   },
   eventCard: {
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)", 
@@ -56,13 +63,52 @@ const styles = {
     borderRadius: "15px", 
     overflow: "hidden", 
   },
+  eventCardBody: {
+    height: "100%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#F4F2ED",
+    border: "none",
+    padding: 0,
+  },
   paddingLeft: {
     paddingLeft: "40px",
   },
+  canvas: {
+    position: "absolute",
+    top: "50%", 
+    transform: "translateY(-50%)", 
+    left: 0,
+    width: "100%",
+    height: "30%",
+    zIndex: 0,
+    },
   
 };
 
 export default function Home() {
+  useEffect(() => {
+    try {
+      var granimInstance = new Granim({
+        element: '#canvas-basic',
+        direction: 'left-right',
+        isPausedWhenNotInView: true,
+        states: {
+          "default-state": {
+            gradients: [
+              ['#ff9966', '#ff5e62'],
+              ['#00F260', '#0575E6'],
+              ['#e1eec3', '#f05053']
+            ]
+          }
+        }
+      });
+    } catch (error) {
+      console.error('Error initializing Granim:', error);
+    }
+  }, []);
+  
   return (
     <div style={styles.container}>
       <Row className="hero-product-card">
@@ -82,27 +128,26 @@ export default function Home() {
             </Card.Body>
           </Card>
       </Row>
-
-      <Row className="grainium-card">
-          <blockquote className="blockquote" style={styles.blockquote}>
-            <p style={styles.col}>
-              "There is nothing more beautiful than a handmade gift.”
-            </p>
-            <footer style={styles.col} className="blockquote-footer">Unknown Author</footer>
-          </blockquote>
+      <Row>
+        <canvas id="canvas-basic" style={styles.canvas}></canvas>
+        <blockquote className="blockquote" style={styles.blockquote}>
+          <p style={styles.col}>
+            "There is nothing more beautiful than a handmade gift.”
+          </p>
+          <footer style={styles.col} className="blockquote-footer">Unknown Author</footer>
+        </blockquote>
       </Row>
 
       <Row className="creator-card">
         <Col>
-          <Card style={styles.card}>
-            <Card.Body style={{ ...styles.cardBody, padding: '0 !important' }}>
+          <Card style={styles.brandCardBody}>
+            <Card.Body style={{ ...styles.brandCardBody, padding: '0 !important' }}>
               <Row>
                 <Col md={3}>
                 <Card.Img style={styles.paddingLeft} src={createPic}/>
                 </Col>
                 <Col>
-                  <Card.Text style={styles.heroBody}>
-
+                  <Card.Text style={styles.brandCard}> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto magni voluptates, architecto eos vero quis repellat? Molestiae cupiditate beatae nemo blanditiis repudiandae tempore odio at, in dolor aperiam distinctio quisquam.
                   </Card.Text>
                 </Col>
               </Row>
@@ -113,7 +158,7 @@ export default function Home() {
 
       <Row className="upcoming-events-card">
         <Card style={styles.heroCard}>
-          <Card.Body style={{ ...styles.cardBody, padding: '0 !important'}}>
+          <Card.Body style={{ ...styles.eventCardBody, padding: '0 !important'}}>
             <Row>
               <Col style={styles.col}>
                 <h5>Check out our upcoming events!</h5>
