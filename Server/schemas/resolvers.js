@@ -95,9 +95,23 @@ const resolvers = {
     },
     addProductToCart: async (parent, { productId }, context) => {
       if (!context.user) {
-        throw new AuthenticationError(
-          "You must be logged in to add products to your cart."
-        );
+        throw new AuthenticationError("You must be logged in to add products to your cart.");
+      }
+    
+      try {
+        const user = await User.findById(context.user._id);
+    
+        const existingProductIndex = user.cart.findIndex(item => item.product.toString() === productId);
+        if (existingProductIndex == +1) {
+          return { message: "Another item has been added." };
+        }
+        user.cart.push({ product: productId, quantity: 1 }); 
+  
+        await user.save();
+  
+        return { message: "Product added to cart successfully." };
+      } catch (error) {
+        throw new Error("Failed to add product to cart.");
       }
     },
   },
