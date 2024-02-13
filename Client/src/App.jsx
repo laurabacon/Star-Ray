@@ -2,7 +2,7 @@ import React from "react";
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 import { Outlet } from "react-router-dom";
 import NavTabs from "./components/NavTabs";
-// import Footer from "./components/Footer";
+import Footer from "./components/Footer";
 
 // Initialize Apollo Client
 const client = new ApolloClient({
@@ -13,11 +13,11 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <main className="mx-3">
+      <main>
         <NavTabs />
         <Outlet />
       </main>
-      {/* <Footer /> */}
+      <Footer />
     </ApolloProvider>
   );
 }
