@@ -6,16 +6,44 @@ import Card from "react-bootstrap/Card";
 import { useQuery } from "@apollo/client";
 import { QUERY_PRODUCTS } from "../../utils/queries";
 // image imports
-import lgCandle from "../../assets/lgCandle.jpg";
-import scrub from "../../assets/scrub.jpg";
-import smlCandle from "../../assets/smlCandle.jpg";
-import soap from "../../assets/soap.jpg";
+import lgCandle from "../../assets/lgCandlenobackground.png";
+import scrub from "../../assets/scrubnobackground.png";
+import smlCandle from "../../assets/smlCandlenobackground.png";
+import soap from "../../assets/soapnobackground.png";
+import Cover from "../../assets/covershop.png";
+
+const styles = {
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  cardContainer: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+  },
+  card: {
+    width: "18rem",
+    margin: "2rem",
+    border: "none",
+    boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)",
+  },
+  // coverImageContainer: {
+  //   width: "100%",
+  // },
+  // coverImage: {
+  //   width: "100%",
+  //   height: "25%",
+  // },
+
+};
+
 
 export default function Shop() {
   const { loading, data } = useQuery(QUERY_PRODUCTS);
   const products = data?.getAllProducts || [];
   const [filterType, setFilterType] = useState("all");
-
   // function wich takes in the product size and returns image source based on the input
   const getImagePath = (size) => {
     let imageSrc;
@@ -43,36 +71,40 @@ export default function Shop() {
   const filteredProducts =
     filterType === "all"
       ? products
-      : products.filter((product) => product.productType === filterType);
+      : products.filter((product) => {console.log(filterType)
+        console.log(product.productType); 
+        return product.productType === filterType}); 
+      console.log(filteredProducts);
 
   return (
-    <div>
-      <h1>PRODUCTS</h1>
+    <div style={styles.container}>
+    {/* <div style={styles.coverImageContainer}>
+      <img style={styles.coverImage} src={Cover} alt="" />
+    </div> */}
+      <p>Filter By: </p>
       {/* buttons to sort the products based on type. changes the value of filtertype based on user input wich will return an array of filtered products */}
       <div>
-        <Button variant="primary" onClick={() => setFilterType("all")}>
+        <Button className="custom-button" onClick={() => setFilterType("all")}>
           All Products
         </Button>{" "}
-        <Button variant="primary" onClick={() => setFilterType("candle")}>
+        <Button className="custom-button" onClick={() => setFilterType("Candle")}>
           Candles
         </Button>{" "}
-        <Button variant="primary" onClick={() => setFilterType("soap")}>
+        <Button className="custom-button" onClick={() => setFilterType("Soap")}>
           Soaps
         </Button>{" "}
-        <Button variant="primary" onClick={() => setFilterType("scrub")}>
+        <Button className="custom-button" onClick={() => setFilterType("Scrub")}>
           Scrubs
         </Button>
       </div>
       {/* section that maps over all products and renders them to the page as bootstrap cards */}
-      <main>
-        <div className="row justify-content-between">
+      <div style={styles.cardContainer}>
           {loading ? (
             <div>Loading...</div>
           ) : (
             <>
               {filteredProducts.map((product) => (
-                <div key={product._id} className="col-md-4 mb-4">
-                  <Card style={{ width: "18rem" }}>
+                  <Card key={product._id} style={styles.card}>
                     <Card.Img
                       variant="top"
                       src={getImagePath(product.size)}
@@ -84,8 +116,7 @@ export default function Shop() {
                       </Card.Title>
                       <Card.Title>{product.size}</Card.Title>
                       <Card.Text>
-                        Some quick example text to build on the card title and
-                        make up the bulk of the card's content.
+                        ${product.price}
                       </Card.Text>
                       <Button
                         variant="primary"
@@ -95,12 +126,10 @@ export default function Shop() {
                       </Button>
                     </Card.Body>
                   </Card>
-                </div>
               ))}
             </>
           )}
         </div>
-      </main>
-    </div>
+      </div>
   );
 }
