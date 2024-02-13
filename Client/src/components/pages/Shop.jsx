@@ -37,6 +37,10 @@ export default function Shop() {
     return imageSrc;
   };
 
+  const handleAddToCart = (product) => {
+    console.log("Product", product);
+  }; //add to cart button gets card
+
   // function to filter the products based on product type. if the filtertype=all, show all products. if the filtertype is not all, the filter method is used to return a new array only including products where the product type is equal to the filtertype.
   const filteredProducts =
     filterType === "all"
@@ -85,7 +89,7 @@ export default function Shop() {
                         Some quick example text to build on the card title and
                         make up the bulk of the card's content.
                       </Card.Text>
-                      <Button variant="primary">Add to cart</Button>
+                      <Button variant="primary" onClick={() => handleAddToCart(product)}>Add to cart</Button>
                     </Card.Body>
                   </Card>
                 </div>
