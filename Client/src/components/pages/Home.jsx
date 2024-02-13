@@ -32,12 +32,17 @@ const styles = {
     overflow: "hidden",
     border: "none",
   },
-  heroBody: {
+  brandCard: {
     height: "100%",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#f8f9fa",
+    backgroundColor: "#F4F2ED",
+    border: "none",
+    padding: 0,
+  },
+  brandCardBody: {
+    backgroundColor: "#F4F2ED",
     border: "none",
     padding: 0,
   },
@@ -57,6 +62,15 @@ const styles = {
     border: "none",
     borderRadius: "15px", 
     overflow: "hidden", 
+  },
+  eventCardBody: {
+    height: "100%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#F4F2ED",
+    border: "none",
+    padding: 0,
   },
   paddingLeft: {
     paddingLeft: "40px",
@@ -126,15 +140,14 @@ export default function Home() {
 
       <Row className="creator-card">
         <Col>
-          <Card style={styles.card}>
-            <Card.Body style={{ ...styles.cardBody, padding: '0 !important' }}>
+          <Card style={styles.brandCardBody}>
+            <Card.Body style={{ ...styles.brandCardBody, padding: '0 !important' }}>
               <Row>
                 <Col md={3}>
                 <Card.Img style={styles.paddingLeft} src={createPic}/>
                 </Col>
                 <Col>
-                  <Card.Text style={styles.heroBody}>
-
+                  <Card.Text style={styles.brandCard}> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto magni voluptates, architecto eos vero quis repellat? Molestiae cupiditate beatae nemo blanditiis repudiandae tempore odio at, in dolor aperiam distinctio quisquam.
                   </Card.Text>
                 </Col>
               </Row>
@@ -145,7 +158,7 @@ export default function Home() {
 
       <Row className="upcoming-events-card">
         <Card style={styles.heroCard}>
-          <Card.Body style={{ ...styles.cardBody, padding: '0 !important'}}>
+          <Card.Body style={{ ...styles.eventCardBody, padding: '0 !important'}}>
             <Row>
               <Col style={styles.col}>
                 <h5>Check out our upcoming events!</h5>
