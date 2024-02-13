@@ -1,180 +1,180 @@
 [
   {
-    "type": "candle",
+    "productType": "candle",
     "scent": "Baja",
     "size": "3.5oz yogurt container",
     "price": 8
   },
   {
-    "type": "candle",
+    "productType": "candle",
     "scent": "Gin & Cypress",
     "size": "3.5oz yogurt container",
     "price": 8
   },
   {
-    "type": "candle",
+    "productType": "candle",
     "scent": "Mango",
     "size": "3.5oz yogurt container",
     "price": 8
   },
   {
-    "type": "candle",
+    "productType": "candle",
     "scent": "Starfruit",
     "size": "3.5oz yogurt container",
     "price": 8
   },
   {
-    "type": "candle",
+    "productType": "candle",
     "scent": "Yuxu & Hinoki",
     "size": "3.5oz yogurt container",
     "price": 8
   },
   {
-    "type": "candle",
+    "productType": "candle",
     "scent": "Earl Grey",
     "size": "3.5oz yogurt container",
     "price": 8
   },
   {
-    "type": "candle",
+    "productType": "candle",
     "scent": "Fresh cut apple",
     "size": "3.5oz yogurt container",
     "price": 8
   },
   {
-    "type": "candle",
+    "productType": "candle",
     "scent": "Agave",
     "size": "3.5oz yogurt container",
     "price": 8
   },
   {
-    "type": "candle",
+    "productType": "candle",
     "scent": "Pear",
     "size": "3.5oz yogurt container",
     "price": 8
   },
   {
-    "type": "candle",
+    "productType": "candle",
     "scent": "Baja",
     "size": "7oz yogurt container",
     "price": 12
   },
   {
-    "type": "candle",
+    "productType": "candle",
     "scent": "Gin & Cypress",
     "size": "7oz yogurt container",
     "price": 12
   },
   {
-    "type": "candle",
+    "productType": "candle",
     "scent": "Mango",
     "size": "7oz yogurt container",
     "price": 12
   },
   {
-    "type": "candle",
+    "productType": "candle",
     "scent": "Starfruit",
     "size": "7oz yogurt container",
     "price": 12
   },
   {
-    "type": "candle",
+    "productType": "candle",
     "scent": "Yuxu & Hinoki",
     "size": "7oz yogurt container",
     "price": 12
   },
   {
-    "type": "candle",
+    "productType": "candle",
     "scent": "Earl Grey",
     "size": "7oz yogurt container",
     "price": 12
   },
   {
-    "type": "candle",
+    "productType": "candle",
     "scent": "Fresh cut apple",
     "size": "7oz yogurt container",
     "price": 12
   },
   {
-    "type": "candle",
+    "productType": "candle",
     "scent": "Agave",
     "size": "7oz yogurt container",
     "price": 12
   },
   {
-    "type": "candle",
+    "productType": "candle",
     "scent": "Pear",
     "size": "7oz yogurt container",
     "price": 12
   },
   {
-    "type": "soap",
+    "productType": "soap",
     "scent": "pear",
     "size": "2oz disk",
     "price": 5
   },
   {
-    "type": "soap",
+    "productType": "soap",
     "scent": "Mango",
     "size": "2oz disk",
     "price": 5
   },
   {
-    "type": "soap",
+    "productType": "soap",
     "scent": "Starfruit",
     "size": "2oz disk",
     "price": 5
   },
   {
-    "type": "soap",
+    "productType": "soap",
     "scent": "Gin & cypress",
     "size": "2oz disk",
     "price": 5
   },
   {
-    "type": "soap",
+    "productType": "soap",
     "scent": "Starfruit",
     "size": "2oz disk",
     "price": 5
   },
   {
-    "type": "soap",
+    "productType": "soap",
     "scent": "Agave",
     "size": "2oz disk",
     "price": 5
   },
   {
-    "type": "scrub",
+    "productType": "scrub",
     "scent": "pear",
     "size": "scrub size?",
     "price": 15
   },
   {
-    "type": "scrub",
+    "productType": "scrub",
     "scent": "Mango",
     "size": "scrub size?",
     "price": 15
   },
   {
-    "type": "scrub",
+    "productType": "scrub",
     "scent": "Starfruit",
     "size": "scrub size?",
     "price": 15
   },
   {
-    "type": "scrub",
+    "productType": "scrub",
     "scent": "Gin & cypress",
     "size": "scrub size?",
     "price": 15
   },
   {
-    "type": "scrub",
+    "productType": "scrub",
     "scent": "Starfruit",
     "size": "scrub size?",
     "price": 15
   },
   {
-    "type": "scrub",
+    "productType": "scrub",
     "scent": "Agave",
     "size": "scrub size?",
     "price": 15
