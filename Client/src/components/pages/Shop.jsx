@@ -32,8 +32,6 @@ export default function Shop() {
       imageSrc = scrub;
     }
 
-    console.log("Image Src:", imageSrc);
-
     return imageSrc;
   };
 
@@ -89,7 +87,12 @@ export default function Shop() {
                         Some quick example text to build on the card title and
                         make up the bulk of the card's content.
                       </Card.Text>
-                      <Button variant="primary" onClick={() => handleAddToCart(product)}>Add to cart</Button>
+                      <Button
+                        variant="primary"
+                        onClick={() => handleAddToCart(product)}
+                      >
+                        Add to cart
+                      </Button>
                     </Card.Body>
                   </Card>
                 </div>
