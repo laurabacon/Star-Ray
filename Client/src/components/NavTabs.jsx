@@ -2,18 +2,23 @@ import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/logo.jpg";
 import shopBag from "../assets/shoppingbag.png";
 
+const styles = {
+  paddingLeft: {
+    paddingLeft: "20px",
+  },
+};
+
 function NavTabs() {
   const currentPage = useLocation().pathname;
 
   return (
     <div className="d-flex align-items-center justify-content-between">
-      <div>
+      <div style={styles.paddingLeft}>
         <img
           alt=""
           src={logo}
           width="130"
           height="110"
-          className="d-inline-block align-top"
         />
       </div>
     <ul className="justify-content-end me-3 nav nav-underline">

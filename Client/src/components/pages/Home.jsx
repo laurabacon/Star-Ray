@@ -1,19 +1,34 @@
 import React from "react";
-import { Container, Row, Col, Card, CardImg } from "react-bootstrap";
+import { Container, Row, Col, Card, CardImg, CardText } from "react-bootstrap";
 import lgCandle from "../../assets/hero.png";
 import createPic from "../../assets/logo.jpg";
+import craftFair from "../../assets/craft.png";
 
 const styles = {
   container: {
-    maxWidth: "1200px",
     margin: "0 auto",
-    padding: "20px",
+    border: "none",
+    padding: "5px",
+  },
+  col: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    textAlign: "center",
   },
   card: {
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-    borderRadius: "15px",
     overflow: "hidden",
-    marginBottom: "20px",
+    border: "none",
+  },
+  image:{
+    width: '75%', 
+    height: 'auto',
+  },
+  heroCard: {
+    overflow: "hidden",
+    border: "none",
   },
   heroBody: {
     height: "100%",
@@ -21,74 +36,73 @@ const styles = {
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#f8f9fa",
+    border: "none",
+    padding: 0,
   },
   cardBody: {
     backgroundColor: "#f8f9fa",
-    padding: "20px",
+    border: "none",
+    padding: 0,
   },
   blockquote: {
     backgroundColor: "#f8f9fa",
     padding: "20px",
-    borderRadius: "15px", 
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)", 
-    marginBottom: "20px",
+    border: "none",
   },
   eventCard: {
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)", 
-    padding: "20px",
+    border: "none",
     borderRadius: "15px", 
     overflow: "hidden", 
-    marginBottom: "20px",
   },
+  paddingLeft: {
+    paddingLeft: "40px",
+  },
+  
 };
 
 export default function Home() {
   return (
-    <Container style={styles.container}>
+    <div style={styles.container}>
       <Row className="hero-product-card">
-        <Col>
-          <Card style={styles.card}>
+        <Card style={styles.heroCard}>
+          <Card.Body style={{ ...styles.cardBody, padding: '0 !important'}}>
             <Row>
-              <Col>
-              <Card.Img src={lgCandle}/>
+              <Col style={styles.col}>
+                <Card.Img style={styles.image} src={lgCandle}/>
               </Col>
-              <Col md={6}>
-                <Card.Body style={styles.heroBody}>
-                  <Card.Title style={styles.heroBody}>
-                    Indulge your senses with lavish, natural products that
-                    soothe your soul.
-                  </Card.Title>
-                </Card.Body>
+              <Col style={styles.col}>
+                <h5>
+                  Indulge your senses with lavish, natural products that soothe your soul.
+                </h5>
+                <CardText>Current products include Soy Wax Candles, Goat Milk Soaps, and Himalayan Salt Scrubs. View the shop page to view my entire selection.</CardText>
               </Col>
             </Row>
+            </Card.Body>
           </Card>
-        </Col>
       </Row>
 
-      <Row className="mt-4 grainium-card">
-        <Col>
+      <Row className="grainium-card">
           <blockquote className="blockquote" style={styles.blockquote}>
-            <p className="mb-0">
-              There is nothing more beautiful than a handmade gift.”
+            <p style={styles.col}>
+              "There is nothing more beautiful than a handmade gift.”
             </p>
-            <footer className="mt-1 blockquote-footer">Unknown Author</footer>
+            <footer style={styles.col} className="blockquote-footer">Unknown Author</footer>
           </blockquote>
-        </Col>
       </Row>
 
       <Row className="creator-card">
         <Col>
           <Card style={styles.card}>
-            <Card.Body>
+            <Card.Body style={{ ...styles.cardBody, padding: '0 !important' }}>
               <Row>
                 <Col md={3}>
-                <Card.Img src={createPic}/>
+                <Card.Img style={styles.paddingLeft} src={createPic}/>
                 </Col>
-                <Col md={9}>
+                <Col>
                   <Card.Text style={styles.heroBody}>
-                    Current products include Soy Wax Candles, Goat Milk Soaps,
-                    and Himalayan Salt Scrubs. View the shop page to view my
-                    entire selection.
+
                   </Card.Text>
                 </Col>
               </Row>
@@ -98,25 +112,23 @@ export default function Home() {
       </Row>
 
       <Row className="upcoming-events-card">
-        <Col>
-          <Card style={styles.eventCard}>
-            <Card.Body style={styles.cardBody}>
-              <Row>
-                <Col md={6}>
-                  <h5>Check out our upcoming events!</h5>
+        <Card style={styles.heroCard}>
+          <Card.Body style={{ ...styles.cardBody, padding: '0 !important'}}>
+            <Row>
+              <Col style={styles.col}>
+                <h5>Check out our upcoming events!</h5>
                   <Card.Text>Event 1: Date and Location</Card.Text>
                   <Card.Text>Event 2: Date and Location</Card.Text>
                   <Card.Text>Event 3: Date and Location</Card.Text>
                   <Card.Text>Event 4: Date and Location</Card.Text>
                 </Col>
-                <Col md={6}>
-                  <Card.Img src="path/to/event-image.jpg" />
+                <Col>
+                <Card.Img style={styles.image} src={craftFair}/>
                 </Col>
               </Row>
             </Card.Body>
           </Card>
-        </Col>
       </Row>
-    </Container>
+    </div>
   );
 }
