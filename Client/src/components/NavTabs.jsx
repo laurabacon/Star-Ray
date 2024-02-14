@@ -5,14 +5,18 @@ import shopBag from "../assets/shoppingbag.png";
 const styles = {
   paddingLeft: {
     paddingLeft: "20px",
+    backgroundColor: "#CFB4A4",
   },
+  background: {
+
+  }
 };
 
 function NavTabs() {
   const currentPage = useLocation().pathname;
 
   return (
-    <div className="d-flex align-items-center justify-content-between" >
+    <div style={styles.background} className="d-flex align-items-center justify-content-between" >
       <div style={styles.paddingLeft}>
         <img
           alt=""
