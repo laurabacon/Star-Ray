@@ -28,9 +28,17 @@ const CartSomething = () => {
     }
   }, [dispatch]);
 
+    
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
+  console.log(cart);
+
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
 
   console.log(isAuthenticated);
   console.log(AuthService);
@@ -81,7 +89,6 @@ const CartSomething = () => {
     const updatedItem = { ...item, quantity: updatedQuantity };
     dispatch({ type: "UPDATE_QUANTITY", payload: updatedItem });
   };
-  
 
   return (
     <section className="h-100 h-custom" style={{ backgroundColor: "#eee" }}>
