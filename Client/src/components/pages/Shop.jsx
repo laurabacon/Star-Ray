@@ -60,8 +60,6 @@ export default function Shop() {
   const getImagePath = (size) => {
     let imageSrc;
 
-    // console.log("Size:", size);
-
     if (size === "7oz yogurt container") {
       imageSrc = lgCandle;
     } else if (size === "3.5oz yogurt container") {
