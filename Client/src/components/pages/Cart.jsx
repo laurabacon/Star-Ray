@@ -28,9 +28,17 @@ const CartSomething = () => {
     }
   }, [dispatch]);
 
+    
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
+  console.log(cart);
+
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
 
   console.log(isAuthenticated);
   console.log(AuthService);
