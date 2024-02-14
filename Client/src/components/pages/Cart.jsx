@@ -35,9 +35,11 @@ const CartSomething = () => {
   console.log(cart);
 
 
+
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
+
 
 
   console.log(isAuthenticated);

@@ -84,6 +84,7 @@ export default function Shop() {
     const addedProduct = {
       ...product,
       primaryImage: getImagePath(product.size),
+      primaryImage: getImagePath(product.size),
       quantity: 1,
     };
     dispatch({ type: "ADD_TO_CART", payload: addedProduct });
