@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import React from "react";
+import { React, useEffect } from "react";
 import AuthService from "../../utils/auth";
 //import { Button } from 'react-bootstrap';
 import {
@@ -25,6 +25,17 @@ const CartSomething = () => {
   const { cart, dispatch } = useCart();
   const isAuthenticated = AuthService.loggedIn();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const savedCart = localStorage.getItem("cart");
+    if (savedCart) {
+      dispatch({ type: "LOAD_CART", payload: JSON.parse(savedCart) });
+    }
+  }, [dispatch]);
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
 
   console.log(isAuthenticated);
   console.log(AuthService);
