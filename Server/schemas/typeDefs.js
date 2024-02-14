@@ -11,6 +11,7 @@ const typeDefs = `
     scent: String
     size: String
     price: String
+    primaryImage: String
   }
   type Auth {
     token: ID!

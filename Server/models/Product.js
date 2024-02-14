@@ -17,6 +17,10 @@ const productSchema = new Schema({
     type: String,
     required: true,
   },
+  primaryImage: {
+    type: String,
+    //required: true,
+  },
 });
 
 const Product = model("product", productSchema);
