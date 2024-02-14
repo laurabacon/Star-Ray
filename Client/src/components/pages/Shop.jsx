@@ -12,10 +12,7 @@ import smlCandle from "../../assets/smlCandlenobackground.png";
 import soap from "../../assets/soapnobackground.png";
 import { useCart } from "../../utils/CartContext";
 
-
 import Cover from "../../assets/covershop.png";
-
-
 
 const styles = {
   container: {
@@ -59,7 +56,6 @@ export default function Shop() {
   const handleMouseLeave = (productId) => {
     setHoveredImage("");
     console.log(hoveredImage);
-    
   };
   // function takes in the product size and returns image source based on the input
   const getImagePath = (size) => {
