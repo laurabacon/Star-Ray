@@ -13,7 +13,6 @@ import soap from "../../assets/soapnobackground.png";
 import Cover from "../../assets/covershop.png";
 import { useCart } from "../../utils/CartContext";
 
-
 const styles = {
   container: {
     display: 'flex',
@@ -79,8 +78,10 @@ export default function Shop() {
   };
 
   const handleAddToCart = (product) => {
-    dispatch({ type: 'ADD_TO_CART', payload: product });
-    console.log("Product", product);
+    //TODO: check if product is already in cart
+    const addedProduct = {...product, imagePath: getImagePath(product.size), quantity: 1}
+    dispatch({ type: 'ADD_TO_CART', payload: addedProduct });
+    console.log("Product", addedProduct);
   }; //add to cart button gets card
 
   // function to filter the products based on product type. if the filtertype=all, show all products. if the filtertype is not all, the filter method is used to return a new array only including products where the product type is equal to the filtertype.

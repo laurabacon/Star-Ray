@@ -14,9 +14,14 @@ import {
   MDBTypography,
 } from "mdb-react-ui-kit";
 import { useCart } from "../../utils/CartContext";
+// import { QUERY_PRODUCTS } from "../../utils/queries";
+// import lgCandle from "../../assets/lgCandlenobackground.png";
+// import scrub from "../../assets/scrubnobackground.png";
+// import smlCandle from "../../assets/smlCandlenobackground.png";
+// import soap from "../../assets/soapnobackground.png";
 
 const CartSomething = () => {
-  const { cart } = useCart();
+  const { cart, dispatch } = useCart();
   const isAuthenticated = AuthService.loggedIn();
   console.log(isAuthenticated);
   console.log(AuthService);
@@ -28,18 +33,44 @@ const CartSomething = () => {
     } else {
       console.log("User is not logged in. Redirecting to login page.");
     }
+ 
+  
+    const email = 'Email@email.com';
+    const subject = 'New Order';
+    const body = cart.items.map(item => (
+      `${item.scent} ${item.productType} - Size: ${item.size}, Quantity: ${item.quantity}, Price: $${Number(item.price) * item.quantity}`
+    )).join('\n');
+
+    // Create a mailto link
+    const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(
+      subject
+      )}&body=${encodeURIComponent('The items you are requesting:\n\n' + body)}`;
+
+    window.location.href = mailtoLink;
+    
   };
-  // const handleCheckout = () => {
-  //   const email = 'Email@email.com';
-  //   const subject = 'New Order';
-  //   const body = 'Requested items';
 
-  //   // Create a mailto link
-  //   const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(
-  //     subject
-  //   )}&body=${encodeURIComponent(body)}`;
+  const handleQuantity = (event, itemId) => {
+    const item = cart.items.find(item => item._id === itemId)
+    const updatedItem = {...item, quantity: event.target.value}
+    dispatch({ type: 'UPDATE_QUANTITY', payload: updatedItem });
 
-  //   window.location.href = mailtoLink;
+  }
+
+  // const getImagePath = (size) => {
+  //   let imageSrc;
+
+  //   if (size === "7oz yogurt container") {
+  //     imageSrc = lgCandle;
+  //   } else if (size === "3.5oz yogurt container") {
+  //     imageSrc = smlCandle;
+  //   } else if (size === "2oz disk") {
+  //     imageSrc = soap;
+  //   } else {
+  //     imageSrc = scrub;
+  //   }
+
+  //   return imageSrc;
   // };
 
   return (
@@ -63,7 +94,7 @@ const CartSomething = () => {
                           Shopping Cart
                         </MDBTypography>
                         <MDBTypography className="mb-0 text-muted">
-                          {cart.items.length} items
+                        {cart.items.reduce((total, item) => total + parseInt(item.quantity, 10), 0)} items
                         </MDBTypography>
                       </div>
 
@@ -79,7 +110,11 @@ const CartSomething = () => {
                 <MDBCardImage className="rounded-3" fluid
                   // src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img1.webp"
                   // alt="Cotton T-shirt" 
+                  
+                 
+              
                   />
+                  <img src={item.primaryImage} alt="ehhhhh" />
               </MDBCol>
               <MDBCol md="3" lg="3" xl="3">
                 <p className="lead fw-normal mb-2">{item.scent} {item.productType}</p>
@@ -94,7 +129,7 @@ const CartSomething = () => {
                   <MDBIcon fas icon="minus" />
                 </MDBBtn>
 
-                <MDBInput min={0} defaultValue={0} type="number" size="sm" />
+                <MDBInput min={0} value={item.quantity} type="number" size="sm" onChange={(e) => handleQuantity(e, item._id)}/>
 
                 <MDBBtn color="link" className="px-2">
                   <MDBIcon fas icon="plus" />
@@ -102,7 +137,7 @@ const CartSomething = () => {
               </MDBCol>
               <MDBCol md="3" lg="2" xl="2" className="offset-lg-1">
                 <MDBTypography tag="h5" className="mb-0">
-                  ${item.price}
+                  ${Number(item.price) * item.quantity}
                 </MDBTypography>
               </MDBCol>
               {/* How to get the trash icon to show? */}
@@ -147,12 +182,12 @@ const CartSomething = () => {
 
                       <div className="d-flex justify-content-between mb-4">
                         <MDBTypography tag="h5" className="text-uppercase">
-                          items {cart.items.length}
+                        Items {cart.items.reduce((total, item) => total + parseInt(item.quantity, 10), 0)}
                         </MDBTypography>
                         <MDBTypography tag="h5">
-                      
-                          € {cart.items.reduce((total, item) => total + item.price, 0)}
-                        </MDBTypography>
+                      $ {cart.items.reduce((total, item) => total + (Number(item.price) * item.quantity), 0)}
+                    </MDBTypography>
+
                       </div>
                       <MDBBtn
                         color="dark"
