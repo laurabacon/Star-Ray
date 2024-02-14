@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { React, useEffect } from "react";
 import AuthService from "../../utils/auth";
-//import { Button } from 'react-bootstrap';
 import {
   MDBBtn,
   MDBCard,
@@ -15,11 +14,7 @@ import {
   MDBTypography,
 } from "mdb-react-ui-kit";
 import { useCart } from "../../utils/CartContext";
-// import { QUERY_PRODUCTS } from "../../utils/queries";
-// import lgCandle from "../../assets/lgCandlenobackground.png";
-// import scrub from "../../assets/scrubnobackground.png";
-// import smlCandle from "../../assets/smlCandlenobackground.png";
-// import soap from "../../assets/soapnobackground.png";
+
 
 const CartSomething = () => {
   const { cart, dispatch } = useCart();
@@ -32,11 +27,20 @@ const CartSomething = () => {
       dispatch({ type: "LOAD_CART", payload: JSON.parse(savedCart) });
     }
   }, [dispatch]);
+
     
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
   console.log(cart);
+
+
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
+
 
   console.log(isAuthenticated);
   console.log(AuthService);
@@ -69,29 +73,24 @@ const CartSomething = () => {
     window.location.href = mailtoLink;
   };
 
-  const handleQuantity = (event, itemId) => {
+  const handleQuantity = (action, itemId) => {
     const item = cart.items.find((item) => item._id === itemId);
-    const updatedItem = { ...item, quantity: event.target.value };
+    let updatedQuantity;
+  
+    if (action === "increment") {
+      updatedQuantity = item.quantity + 1;
+    } else if (action === "decrement") {
+      updatedQuantity = item.quantity - 1;
+    }
+  
+    if (updatedQuantity < 0) {
+      // Ensure the quantity doesn't go below 0
+      updatedQuantity = 0;
+    }
+  
+    const updatedItem = { ...item, quantity: updatedQuantity };
     dispatch({ type: "UPDATE_QUANTITY", payload: updatedItem });
   };
-
-
-
-  // const getImagePath = (size) => {
-  //   let imageSrc;
-
-  //   if (size === "7oz yogurt container") {
-  //     imageSrc = lgCandle;
-  //   } else if (size === "3.5oz yogurt container") {
-  //     imageSrc = smlCandle;
-  //   } else if (size === "2oz disk") {
-  //     imageSrc = soap;
-  //   } else {
-  //     imageSrc = scrub;
-  //   }
-
-  //   return imageSrc;
-  // };
 
   return (
     <section className="h-100 h-custom" style={{ backgroundColor: "#eee" }}>
@@ -155,22 +154,20 @@ const CartSomething = () => {
                                   xl="2"
                                   className="d-flex align-items-center justify-content-around"
                                 >
-                                  <MDBBtn color="link" className="px-2">
-                                    <MDBIcon fas icon="minus" />
+                                  <MDBBtn color="link" className="px-2" onClick={() => handleQuantity("decrement", item._id)}>
+                                  <MDBIcon fas icon="minus" />
                                   </MDBBtn>
 
                                   <MDBInput
-                                    min={0}
-                                    value={item.quantity}
-                                    type="number"
-                                    size="sm"
-                                    onChange={(e) =>
-                                      handleQuantity(e, item._id)
-                                    }
-                                  />
+                                          min={0}
+                                          value={item.quantity}
+                                          type="number"
+                                          size="sm"
+                                          onChange={(e) => handleQuantity("update", item._id, e.target.value)}
+                                        />
 
-                                  <MDBBtn color="link" className="px-2">
-                                    <MDBIcon fas icon="plus" />
+                                  <MDBBtn color="link" className="px-2" onClick={() => handleQuantity("increment", item._id)}>
+                                  <MDBIcon fas icon="plus" />
                                   </MDBBtn>
                                 </MDBCol>
                                 <MDBCol
@@ -190,12 +187,8 @@ const CartSomething = () => {
                                   xl="1"
                                   className="text-end"
                                 >
-                                  <a href="#!" className="text-danger">
-                                    <MDBIcon
-                                      far
-                                      icon="trash text-danger"
-                                      size="lg"
-                                    />
+                                  <a href="#!" style={{ color: "#cecece" }}>
+                                  <MDBIcon far icon="trash-alt" className='ms-1' size='2x'/>
                                   </a>
                                 </MDBCol>
                               </MDBRow>

@@ -11,7 +11,10 @@ import scrub from "../../assets/scrubnobackground.png";
 import smlCandle from "../../assets/smlCandlenobackground.png";
 import soap from "../../assets/soapnobackground.png";
 import { useCart } from "../../utils/CartContext";
+
+
 import Cover from "../../assets/covershop.png";
+
 
 
 const styles = {
@@ -80,6 +83,7 @@ export default function Shop() {
     //TODO: check if product is already in cart
     const addedProduct = {
       ...product,
+      primaryImage: getImagePath(product.size),
       primaryImage: getImagePath(product.size),
       quantity: 1,
     };
