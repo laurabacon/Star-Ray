@@ -10,6 +10,8 @@ import lgCandle from "../../assets/lgCandlenobackground.png";
 import scrub from "../../assets/scrubnobackground.png";
 import smlCandle from "../../assets/smlCandlenobackground.png";
 import soap from "../../assets/soapnobackground.png";
+import { useCart } from "../../utils/CartContext";
+
 
 const styles = {
   container: {
@@ -40,6 +42,7 @@ const styles = {
 
 
 export default function Shop() {
+  const { dispatch } = useCart();
   const { loading, data } = useQuery(QUERY_PRODUCTS);
   const products = data?.getAllProducts || [];
   const [filterType, setFilterType] = useState("all");
@@ -75,6 +78,7 @@ export default function Shop() {
   };
 
   const handleAddToCart = (product) => {
+    dispatch({ type: 'ADD_TO_CART', payload: product });
     console.log("Product", product);
   }; //add to cart button gets card
 
