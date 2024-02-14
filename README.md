@@ -1,15 +1,13 @@
-TODO 
+## PRIORITY ONE
 
-redirected when item is added to cart
-login page/create acc page
 
-get data to shop page
-filters on shop page
+logout button
+place order button redirect to login page if logged out -halden
 
-add items to cart
 
-checkout 
+## PRIORITY TWO
 
-HTML for all pages
-CSS for all
-
+email.js
+readme
+slideshow
+deployment
