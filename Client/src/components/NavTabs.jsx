@@ -8,7 +8,7 @@ const styles = {
     backgroundColor: "#CFB4A4",
   },
   background: {
-    backgroundColor: "#CFB4A4",
+
   }
 };
 

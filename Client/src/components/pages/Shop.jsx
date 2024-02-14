@@ -19,6 +19,7 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    backgroundColor: "#CFB4A4",
   },
   cardContainer: {
     display: "flex",
