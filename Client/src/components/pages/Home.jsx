@@ -6,7 +6,7 @@ import createPic from "../../assets/logo.jpg";
 import craftFair from "../../assets/craft.png";
 import hero from "../../assets/secondHero.png";
 import brandPic from "../../assets/brandingNoback.png";
-import eventsPic from "../../assets/eventsPic.png";
+import eventsPic from "../../assets/JoinUs.png";
 
 const styles = {
   container: {
@@ -90,7 +90,7 @@ const styles = {
     transform: "translateY(-50%)", 
     left: 0,
     width: "100%",
-    height: "8%",
+    height: "9%",
     zIndex: 0,
     backgroundColor: "#CFB4A4",
     },
@@ -110,6 +110,13 @@ const styles = {
   },
   background: {
     backgroundColor: "#CFB4A4",
+  },
+  eventImage: {
+    backgroundColor: "#CFB4A4",
+    width: '80%', 
+    height: 'auto',
+    paddingTop: '30px',
+    paddingBottom: '30px',
   }
   
 };
@@ -193,7 +200,21 @@ export default function Home() {
       </Row>
 
       <Row className="upcoming-events-card">
-        <Card style={styles.heroCard}>
+        <Card style={styles.eventCardBody}>
+          <Card.Img style={styles.eventImage} src={eventsPic} alt="Card image" />
+            <Card.ImgOverlay>
+                <Card.Text>
+                  Date, Time, and Location
+                </Card.Text>
+                <Card.Text>
+                  Date, Time, and Location
+                </Card.Text>
+                <Card.Text>
+                  Date, Time, and Location
+                </Card.Text>
+            </Card.ImgOverlay>
+          </Card>
+        {/* <Card style={styles.heroCard}>
           <Card.Body style={{ ...styles.eventCardBody, padding: '0 !important'}}>
             <Row>
               <Col style={styles.col}>
@@ -204,7 +225,7 @@ export default function Home() {
                 </Col>
               </Row>
             </Card.Body>
-          </Card>
+          </Card> */}
       </Row>
     </div>
   );
