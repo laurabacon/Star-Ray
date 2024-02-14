@@ -44,6 +44,11 @@ const CartSomething = () => {
   console.log(AuthService);
   console.log("Cart Items:", cart.items);
 
+  const handleRemoveItem = (itemId) => {
+    dispatch({ type: "REMOVE_FROM_CART", payload: itemId });
+  };
+  
+
   const handleCheckout = () => {
     if (isAuthenticated) {
       console.log("Placing order for user:", AuthService.getUser().name);
@@ -52,7 +57,7 @@ const CartSomething = () => {
       return;
     }
 
-    const email = "Email@email.com";
+    const email = "jennystarphillips@gmail.com";
     const subject = "New Order";
     const body = cart.items
       .map(
@@ -186,7 +191,7 @@ const CartSomething = () => {
                                   xl="1"
                                   className="text-end"
                                 >
-                                  <a href="#!" style={{ color: "#cecece" }}>
+                                  <a href="#!" style={{ color: "#cecece" }} onClick={() => handleRemoveItem(item._id)}>
                                   <MDBIcon far icon="trash-alt" className='ms-1' size='2x'/>
                                   </a>
                                 </MDBCol>

@@ -24,9 +24,17 @@ const cartReducer = (state, action) => {
         ...state,
         cart: action.payload 
       };
+      case 'REMOVE_FROM_CART':
+  const updatedItems = state.items.filter(item => item._id !== action.payload);
+  return {
+    ...state,
+    items: updatedItems,
+  };
+
     default:
       return state;
   }
+  
 };
 
 export const CartProvider = ({ children }) => {
