@@ -11,6 +11,8 @@ import scrub from "../../assets/scrubnobackground.png";
 import smlCandle from "../../assets/smlCandlenobackground.png";
 import soap from "../../assets/soapnobackground.png";
 import { useCart } from "../../utils/CartContext";
+import { Link } from "react-router-dom";
+import {MDBIcon} from "mdb-react-ui-kit"; 
 
 import Cover from "../../assets/covershop.png";
 
@@ -152,12 +154,19 @@ export default function Shop() {
                   </Card.Title>
                   <Card.Title>{product.size}</Card.Title>
                   <Card.Text>${product.price}</Card.Text>
-                  <Button
+                  {cart.items.find(item => item._id === product._id) ?
+                  <Link to="/Cart">
+                    <Button
+                    variant="success"
+                  >
+                    <MDBIcon fas icon="shopping-cart" /> Goodness Added!
+                  </Button></Link>
+                  : <Button
                     variant="primary"
                     onClick={() => handleAddToCart(product)}
                   >
                     Add to cart
-                  </Button>
+                  </Button>}
                 </Card.Body>
               </Card>
             ))}
