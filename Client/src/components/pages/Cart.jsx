@@ -1,3 +1,5 @@
+// test
+
 import { useNavigate } from "react-router-dom";
 import { React, useEffect } from "react";
 import AuthService from "../../utils/auth";
@@ -15,7 +17,6 @@ import {
 } from "mdb-react-ui-kit";
 import { useCart } from "../../utils/CartContext";
 
-
 const CartSomething = () => {
   const { cart, dispatch } = useCart();
   const isAuthenticated = AuthService.loggedIn();
@@ -28,19 +29,14 @@ const CartSomething = () => {
     }
   }, [dispatch]);
 
-    
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
   console.log(cart);
 
-
-
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
-
-
 
   console.log(isAuthenticated);
   console.log(AuthService);
@@ -76,18 +72,18 @@ const CartSomething = () => {
   const handleQuantity = (action, itemId) => {
     const item = cart.items.find((item) => item._id === itemId);
     let updatedQuantity;
-  
+
     if (action === "increment") {
       updatedQuantity = item.quantity + 1;
     } else if (action === "decrement") {
       updatedQuantity = item.quantity - 1;
     }
-  
+
     if (updatedQuantity < 0) {
       // Ensure the quantity doesn't go below 0
       updatedQuantity = 0;
     }
-  
+
     const updatedItem = { ...item, quantity: updatedQuantity };
     dispatch({ type: "UPDATE_QUANTITY", payload: updatedItem });
   };
@@ -154,20 +150,38 @@ const CartSomething = () => {
                                   xl="2"
                                   className="d-flex align-items-center justify-content-around"
                                 >
-                                  <MDBBtn color="link" className="px-2" onClick={() => handleQuantity("decrement", item._id)}>
-                                  <MDBIcon fas icon="minus" />
+                                  <MDBBtn
+                                    color="link"
+                                    className="px-2"
+                                    onClick={() =>
+                                      handleQuantity("decrement", item._id)
+                                    }
+                                  >
+                                    <MDBIcon fas icon="minus" />
                                   </MDBBtn>
 
                                   <MDBInput
-                                          min={0}
-                                          value={item.quantity}
-                                          type="number"
-                                          size="sm"
-                                          onChange={(e) => handleQuantity("update", item._id, e.target.value)}
-                                        />
+                                    min={0}
+                                    value={item.quantity}
+                                    type="number"
+                                    size="sm"
+                                    onChange={(e) =>
+                                      handleQuantity(
+                                        "update",
+                                        item._id,
+                                        e.target.value
+                                      )
+                                    }
+                                  />
 
-                                  <MDBBtn color="link" className="px-2" onClick={() => handleQuantity("increment", item._id)}>
-                                  <MDBIcon fas icon="plus" />
+                                  <MDBBtn
+                                    color="link"
+                                    className="px-2"
+                                    onClick={() =>
+                                      handleQuantity("increment", item._id)
+                                    }
+                                  >
+                                    <MDBIcon fas icon="plus" />
                                   </MDBBtn>
                                 </MDBCol>
                                 <MDBCol
@@ -188,7 +202,12 @@ const CartSomething = () => {
                                   className="text-end"
                                 >
                                   <a href="#!" style={{ color: "#cecece" }}>
-                                  <MDBIcon far icon="trash-alt" className='ms-1' size='2x'/>
+                                    <MDBIcon
+                                      far
+                                      icon="trash-alt"
+                                      className="ms-1"
+                                      size="2x"
+                                    />
                                   </a>
                                 </MDBCol>
                               </MDBRow>
