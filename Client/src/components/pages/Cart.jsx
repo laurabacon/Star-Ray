@@ -13,11 +13,14 @@ import {
   MDBRow,
   MDBTypography,
 } from "mdb-react-ui-kit";
+import { useCart } from "../../utils/CartContext";
 
 const CartSomething = () => {
+  const { cart } = useCart();
   const isAuthenticated = AuthService.loggedIn();
   console.log(isAuthenticated);
   console.log(AuthService);
+  console.log("Cart Items:", cart.items);
 
   const handleCheckout = () => {
     if (isAuthenticated) {
@@ -60,13 +63,66 @@ const CartSomething = () => {
                           Shopping Cart
                         </MDBTypography>
                         <MDBTypography className="mb-0 text-muted">
-                          3 items
+                          {cart.items.length} items
                         </MDBTypography>
                       </div>
 
                       <hr className="my-4" />
 
-                      {/* ... (cart) */}
+                      {cart.items.map((item) => (
+                        <div key={item._id}>
+
+<MDBCard className="rounded-3 mb-4">
+          <MDBCardBody className="p-4">
+            <MDBRow className="justify-content-between align-items-center">
+              <MDBCol md="2" lg="2" xl="2">
+                <MDBCardImage className="rounded-3" fluid
+                  // src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img1.webp"
+                  // alt="Cotton T-shirt" 
+                  />
+              </MDBCol>
+              <MDBCol md="3" lg="3" xl="3">
+                <p className="lead fw-normal mb-2">{item.scent} {item.productType}</p>
+                <p>
+                  <span className="text-muted">Size: {item.size} </span>
+                  
+                </p>
+              </MDBCol>
+              <MDBCol md="3" lg="3" xl="2"
+                className="d-flex align-items-center justify-content-around">
+                <MDBBtn color="link" className="px-2">
+                  <MDBIcon fas icon="minus" />
+                </MDBBtn>
+
+                <MDBInput min={0} defaultValue={0} type="number" size="sm" />
+
+                <MDBBtn color="link" className="px-2">
+                  <MDBIcon fas icon="plus" />
+                </MDBBtn>
+              </MDBCol>
+              <MDBCol md="3" lg="2" xl="2" className="offset-lg-1">
+                <MDBTypography tag="h5" className="mb-0">
+                  ${item.price}
+                </MDBTypography>
+              </MDBCol>
+              {/* How to get the trash icon to show? */}
+              <MDBCol md="1" lg="1" xl="1" className="text-end">
+                <a href="#!" className="text-danger">
+                  <MDBIcon far icon="trash text-danger" size="lg" />
+                </a>
+              </MDBCol>
+            </MDBRow>
+          </MDBCardBody>
+        </MDBCard>
+
+
+
+             
+                        
+
+                        
+                        </div>
+                      ))}
 
                       <hr className="my-4" />
 
@@ -89,8 +145,15 @@ const CartSomething = () => {
 
                       <hr className="my-4" />
 
-                      {/* ... (summary and total) */}
-
+                      <div className="d-flex justify-content-between mb-4">
+                        <MDBTypography tag="h5" className="text-uppercase">
+                          items {cart.items.length}
+                        </MDBTypography>
+                        <MDBTypography tag="h5">
+                      
+                          € {cart.items.reduce((total, item) => total + item.price, 0)}
+                        </MDBTypography>
+                      </div>
                       <MDBBtn
                         color="dark"
                         block
@@ -99,6 +162,8 @@ const CartSomething = () => {
                       >
                         Checkout
                       </MDBBtn>
+
+                
                     </div>
                   </MDBCol>
                 </MDBRow>
@@ -110,5 +175,7 @@ const CartSomething = () => {
     </section>
   );
 };
+
+
 
 export default CartSomething;
