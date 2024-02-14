@@ -20,7 +20,8 @@ function Login() {
       const token = data?.login?.token;
 
       if (token) {
-        // Redirect or perform actions upon successful login
+        // Store the token in local storage
+        localStorage.setItem("id_token", token);
         console.log("Login successful");
       } else {
         alert("Failed to login");
@@ -49,6 +50,12 @@ function Login() {
     }
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("id_token");
+    //redirect
+    console.log("Logged out");
+  };
+
   return (
     <div>
       <input
@@ -72,6 +79,7 @@ function Login() {
 
       <button onClick={handleLogin}>Login</button>
       <button onClick={handleCreateUser}>Create Account</button>
+      <button onClick={handleLogout}>Logout</button> 
     </div>
   );
 }

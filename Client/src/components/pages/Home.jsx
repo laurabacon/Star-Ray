@@ -4,13 +4,17 @@ import { Container, Row, Col, Card, CardImg, CardText } from "react-bootstrap";
 import lgCandle from "../../assets/hero.png";
 import createPic from "../../assets/logo.jpg";
 import craftFair from "../../assets/craft.png";
+import hero from "../../assets/secondHero.png";
+import brandPic from "../../assets/brandingNoback.png";
+import eventsPic from "../../assets/eventsPic.png";
 
 const styles = {
   container: {
     margin: "0 auto",
     border: "none",
-    padding: "5px",
     position: "relative",
+    backgroundColor: "#git pull origin YOUR_BRANCH_NAME",
+    paddingTop: '10px'
   },
   col: {
     display: "flex",
@@ -24,25 +28,30 @@ const styles = {
     overflow: "hidden",
     border: "none",
   },
+  imageContainer: {
+    width: '100%', 
+    height: '50%',
+  },
   image:{
-    width: '75%', 
+    width: '100%', 
     height: 'auto',
   },
   heroCard: {
     overflow: "hidden",
     border: "none",
+    backgroundColor: "#CFB4A4",
   },
   brandCard: {
     height: "100%",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#F4F2ED",
+    backgroundColor: "#CFB4A4",
     border: "none",
     padding: 0,
   },
   brandCardBody: {
-    backgroundColor: "#F4F2ED",
+    backgroundColor: "#CFB4A4",
     border: "none",
     padding: 0,
   },
@@ -68,7 +77,7 @@ const styles = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#F4F2ED",
+    backgroundColor: "#CFB4A4",
     border: "none",
     padding: 0,
   },
@@ -77,13 +86,31 @@ const styles = {
   },
   canvas: {
     position: "absolute",
-    top: "50%", 
+    top: "34%", 
     transform: "translateY(-50%)", 
     left: 0,
     width: "100%",
-    height: "30%",
+    height: "9%",
     zIndex: 0,
+    backgroundColor: "#CFB4A4",
     },
+  break: {
+    paddingTop: '1%'
+  },
+  div: {
+    backgroundColor: "#CFB4A4",
+    paddingTop: "15px"
+  },
+  brandImage: {
+    width: '90%', 
+    height: 'auto',
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  background: {
+    backgroundColor: "#CFB4A4",
+  }
   
 };
 
@@ -111,9 +138,13 @@ export default function Home() {
   
   return (
     <div style={styles.container}>
-      <Row className="hero-product-card">
-        <Card style={styles.heroCard}>
-          <Card.Body style={{ ...styles.cardBody, padding: '0 !important'}}>
+      <div style={styles.eventCardBody}>
+      <img style={styles.image} src={hero} alt="" />
+      </div>
+      {/* <Row className="hero-product-card">
+        <Card>
+          <CardImg style={styles.image} src={hero}/> */
+          /* <Card.Body style={{ ...styles.cardBody, padding: '0 !important'}}>
             <Row>
               <Col style={styles.col}>
                 <Card.Img style={styles.image} src={lgCandle}/>
@@ -125,10 +156,10 @@ export default function Home() {
                 <CardText>Current products include Soy Wax Candles, Goat Milk Soaps, and Himalayan Salt Scrubs. View the shop page to view my entire selection.</CardText>
               </Col>
             </Row>
-            </Card.Body>
-          </Card>
-      </Row>
-      <Row>
+            </Card.Body> */
+          /* </Card>
+      </Row> */}
+      <Row style={styles.break}>
         <canvas id="canvas-basic" style={styles.canvas}></canvas>
         <blockquote className="blockquote" style={styles.blockquote}>
           <p style={styles.col}>
@@ -138,8 +169,13 @@ export default function Home() {
         </blockquote>
       </Row>
 
-      <Row className="creator-card">
-        <Col>
+      <Row className="creator-card" >
+        <div style={styles.div}>
+          <div style={styles.eventCardBody}>
+            <img style={styles.brandImage} src={brandPic} alt="" />
+          </div>
+          </div>
+        {/* <Col>
           <Card style={styles.brandCardBody}>
             <Card.Body style={{ ...styles.brandCardBody, padding: '0 !important' }}>
               <Row>
@@ -153,7 +189,7 @@ export default function Home() {
               </Row>
             </Card.Body>
           </Card>
-        </Col>
+        </Col> */}
       </Row>
 
       <Row className="upcoming-events-card">
@@ -162,10 +198,6 @@ export default function Home() {
             <Row>
               <Col style={styles.col}>
                 <h5>Check out our upcoming events!</h5>
-                  <Card.Text>Event 1: Date and Location</Card.Text>
-                  <Card.Text>Event 2: Date and Location</Card.Text>
-                  <Card.Text>Event 3: Date and Location</Card.Text>
-                  <Card.Text>Event 4: Date and Location</Card.Text>
                 </Col>
                 <Col>
                 <Card.Img style={styles.image} src={craftFair}/>

@@ -10,18 +10,19 @@ import lgCandle from "../../assets/lgCandlenobackground.png";
 import scrub from "../../assets/scrubnobackground.png";
 import smlCandle from "../../assets/smlCandlenobackground.png";
 import soap from "../../assets/soapnobackground.png";
+import { useCart } from "../../utils/CartContext";
 import Cover from "../../assets/covershop.png";
 
 const styles = {
   container: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
   },
   cardContainer: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "center",
   },
   card: {
     width: "18rem",
@@ -36,20 +37,28 @@ const styles = {
   //   width: "100%",
   //   height: "25%",
   // },
-
 };
 
-
 export default function Shop() {
+  const { dispatch } = useCart();
   const { loading, data } = useQuery(QUERY_PRODUCTS);
   const products = data?.getAllProducts || [];
   const [filterType, setFilterType] = useState("all");
-  // function wich takes in the product size and returns image source based on the input
+  const [hoveredImage, setHoveredImage] = useState("");
+
+  const handleMouseEnter = (productId, hoverImage) => {
+    setHoveredImage(hoverImage);
+    console.log(hoverImage);
+    console.log(this);
+  };
+
+  const handleMouseLeave = (productId) => {
+    setHoveredImage("");
+    console.log(hoveredImage);
+  };
+  // function takes in the product size and returns image source based on the input
   const getImagePath = (size) => {
     let imageSrc;
-
-    console.log("Size:", size);
-
     if (size === "7oz yogurt container") {
       imageSrc = lgCandle;
     } else if (size === "3.5oz yogurt container") {
@@ -60,25 +69,36 @@ export default function Shop() {
       imageSrc = scrub;
     }
 
+    // console.log("Image Src:", imageSrc);
+
     return imageSrc;
   };
 
   const handleAddToCart = (product) => {
-    console.log("Product", product);
+    //TODO: check if product is already in cart
+    const addedProduct = {
+      ...product,
+      imagePath: getImagePath(product.size),
+      quantity: 1,
+    };
+    dispatch({ type: "ADD_TO_CART", payload: addedProduct });
+    console.log("Product", addedProduct);
   }; //add to cart button gets card
 
   // function to filter the products based on product type. if the filtertype=all, show all products. if the filtertype is not all, the filter method is used to return a new array only including products where the product type is equal to the filtertype.
   const filteredProducts =
     filterType === "all"
       ? products
-      : products.filter((product) => {console.log(filterType)
-        console.log(product.productType); 
-        return product.productType === filterType}); 
-      console.log(filteredProducts);
+      : products.filter((product) => {
+          console.log(filterType);
+          console.log(product.productType);
+          return product.productType === filterType;
+        });
+  console.log(filteredProducts);
 
   return (
     <div style={styles.container}>
-    {/* <div style={styles.coverImageContainer}>
+      {/* <div style={styles.coverImageContainer}>
       <img style={styles.coverImage} src={Cover} alt="" />
     </div> */}
       <p>Filter By: </p>
@@ -87,49 +107,62 @@ export default function Shop() {
         <Button className="custom-button" onClick={() => setFilterType("all")}>
           All Products
         </Button>{" "}
-        <Button className="custom-button" onClick={() => setFilterType("Candle")}>
+        <Button
+          className="custom-button"
+          onClick={() => setFilterType("Candle")}
+        >
           Candles
         </Button>{" "}
         <Button className="custom-button" onClick={() => setFilterType("Soap")}>
           Soaps
         </Button>{" "}
-        <Button className="custom-button" onClick={() => setFilterType("Scrub")}>
+        <Button
+          className="custom-button"
+          onClick={() => setFilterType("Scrub")}
+        >
           Scrubs
         </Button>
       </div>
       {/* section that maps over all products and renders them to the page as bootstrap cards */}
       <div style={styles.cardContainer}>
-          {loading ? (
-            <div>Loading...</div>
-          ) : (
-            <>
-              {filteredProducts.map((product) => (
-                  <Card key={product._id} style={styles.card}>
-                    <Card.Img
-                      variant="top"
-                      src={getImagePath(product.size)}
-                      alt={`Product - ${product.size}`}
-                    />
-                    <Card.Body>
-                      <Card.Title>
-                        {product.scent} {product.productType}
-                      </Card.Title>
-                      <Card.Title>{product.size}</Card.Title>
-                      <Card.Text>
-                        ${product.price}
-                      </Card.Text>
-                      <Button
-                        variant="primary"
-                        onClick={() => handleAddToCart(product)}
-                      >
-                        Add to cart
-                      </Button>
-                    </Card.Body>
-                  </Card>
-              ))}
-            </>
-          )}
-        </div>
+        {loading ? (
+          <div>Loading...</div>
+        ) : (
+          <>
+            {filteredProducts.map((product) => (
+              <Card
+                key={product._id}
+                onMouseEnter={() => handleMouseEnter(this, product.hoverImage)}
+                onMouseLeave={() => handleMouseLeave(this)}
+                style={styles.card}
+              >
+                <Card.Img
+                  variant="top"
+                  src={
+                    hoveredImage === product.hoverImage
+                      ? hoveredImage
+                      : getImagePath(product.size)
+                  }
+                  alt={`Product - ${product.size}`}
+                />
+                <Card.Body>
+                  <Card.Title>
+                    {product.scent} {product.productType}
+                  </Card.Title>
+                  <Card.Title>{product.size}</Card.Title>
+                  <Card.Text>${product.price}</Card.Text>
+                  <Button
+                    variant="primary"
+                    onClick={() => handleAddToCart(product)}
+                  >
+                    Add to cart
+                  </Button>
+                </Card.Body>
+              </Card>
+            ))}
+          </>
+        )}
       </div>
+    </div>
   );
 }

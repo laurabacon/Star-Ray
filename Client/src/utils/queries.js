@@ -8,6 +8,8 @@ export const QUERY_PRODUCTS = gql`
       price
       scent
       size
+      primaryImage
+      hoverImage
     }
   }
 `;
