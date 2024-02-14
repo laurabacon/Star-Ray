@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import React from "react";
 import AuthService from "../../utils/auth";
 //import { Button } from 'react-bootstrap';
@@ -23,6 +24,8 @@ import { useCart } from "../../utils/CartContext";
 const CartSomething = () => {
   const { cart, dispatch } = useCart();
   const isAuthenticated = AuthService.loggedIn();
+  const navigate = useNavigate();
+
   console.log(isAuthenticated);
   console.log(AuthService);
   console.log("Cart Items:", cart.items);
@@ -31,31 +34,34 @@ const CartSomething = () => {
     if (isAuthenticated) {
       console.log("Placing order for user:", AuthService.getUser().name);
     } else {
-      console.log("User is not logged in. Redirecting to login page.");
+      navigate("/Login");
+      return;
     }
- 
-  
-    const email = 'Email@email.com';
-    const subject = 'New Order';
-    const body = cart.items.map(item => (
-      `${item.scent} ${item.productType} - Size: ${item.size}, Quantity: ${item.quantity}, Price: $${Number(item.price) * item.quantity}`
-    )).join('\n');
+
+    const email = "Email@email.com";
+    const subject = "New Order";
+    const body = cart.items
+      .map(
+        (item) =>
+          `${item.scent} ${item.productType} - Size: ${item.size}, Quantity: ${
+            item.quantity
+          }, Price: $${Number(item.price) * item.quantity}`
+      )
+      .join("\n");
 
     // Create a mailto link
     const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(
       subject
-      )}&body=${encodeURIComponent('The items you are requesting:\n\n' + body)}`;
+    )}&body=${encodeURIComponent("The items you are requesting:\n\n" + body)}`;
 
     window.location.href = mailtoLink;
-    
   };
 
   const handleQuantity = (event, itemId) => {
-    const item = cart.items.find(item => item._id === itemId)
-    const updatedItem = {...item, quantity: event.target.value}
-    dispatch({ type: 'UPDATE_QUANTITY', payload: updatedItem });
-
-  }
+    const item = cart.items.find((item) => item._id === itemId);
+    const updatedItem = { ...item, quantity: event.target.value };
+    dispatch({ type: "UPDATE_QUANTITY", payload: updatedItem });
+  };
 
   // const getImagePath = (size) => {
   //   let imageSrc;
@@ -94,7 +100,12 @@ const CartSomething = () => {
                           Shopping Cart
                         </MDBTypography>
                         <MDBTypography className="mb-0 text-muted">
-                        {cart.items.reduce((total, item) => total + parseInt(item.quantity, 10), 0)} items
+                          {cart.items.reduce(
+                            (total, item) =>
+                              total + parseInt(item.quantity, 10),
+                            0
+                          )}{" "}
+                          items
                         </MDBTypography>
                       </div>
 
@@ -102,60 +113,80 @@ const CartSomething = () => {
 
                       {cart.items.map((item) => (
                         <div key={item._id}>
+                          <MDBCard className="rounded-3 mb-4">
+                            <MDBCardBody className="p-4">
+                              <MDBRow className="justify-content-between align-items-center">
+                                <MDBCol md="2" lg="2" xl="2">
+                                  <MDBCardImage
+                                    className="rounded-3"
+                                    fluid
+                                    // src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img1.webp"
+                                    // alt="Cotton T-shirt"
+                                  />
+                                  <img src={item.primaryImage} alt="ehhhhh" />
+                                </MDBCol>
+                                <MDBCol md="3" lg="3" xl="3">
+                                  <p className="lead fw-normal mb-2">
+                                    {item.scent} {item.productType}
+                                  </p>
+                                  <p>
+                                    <span className="text-muted">
+                                      Size: {item.size}{" "}
+                                    </span>
+                                  </p>
+                                </MDBCol>
+                                <MDBCol
+                                  md="3"
+                                  lg="3"
+                                  xl="2"
+                                  className="d-flex align-items-center justify-content-around"
+                                >
+                                  <MDBBtn color="link" className="px-2">
+                                    <MDBIcon fas icon="minus" />
+                                  </MDBBtn>
 
-<MDBCard className="rounded-3 mb-4">
-          <MDBCardBody className="p-4">
-            <MDBRow className="justify-content-between align-items-center">
-              <MDBCol md="2" lg="2" xl="2">
-                <MDBCardImage className="rounded-3" fluid
-                  // src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img1.webp"
-                  // alt="Cotton T-shirt" 
-                  
-                 
-              
-                  />
-                  <img src={item.primaryImage} alt="ehhhhh" />
-              </MDBCol>
-              <MDBCol md="3" lg="3" xl="3">
-                <p className="lead fw-normal mb-2">{item.scent} {item.productType}</p>
-                <p>
-                  <span className="text-muted">Size: {item.size} </span>
-                  
-                </p>
-              </MDBCol>
-              <MDBCol md="3" lg="3" xl="2"
-                className="d-flex align-items-center justify-content-around">
-                <MDBBtn color="link" className="px-2">
-                  <MDBIcon fas icon="minus" />
-                </MDBBtn>
+                                  <MDBInput
+                                    min={0}
+                                    value={item.quantity}
+                                    type="number"
+                                    size="sm"
+                                    onChange={(e) =>
+                                      handleQuantity(e, item._id)
+                                    }
+                                  />
 
-                <MDBInput min={0} value={item.quantity} type="number" size="sm" onChange={(e) => handleQuantity(e, item._id)}/>
-
-                <MDBBtn color="link" className="px-2">
-                  <MDBIcon fas icon="plus" />
-                </MDBBtn>
-              </MDBCol>
-              <MDBCol md="3" lg="2" xl="2" className="offset-lg-1">
-                <MDBTypography tag="h5" className="mb-0">
-                  ${Number(item.price) * item.quantity}
-                </MDBTypography>
-              </MDBCol>
-              {/* How to get the trash icon to show? */}
-              <MDBCol md="1" lg="1" xl="1" className="text-end">
-                <a href="#!" className="text-danger">
-                  <MDBIcon far icon="trash text-danger" size="lg" />
-                </a>
-              </MDBCol>
-            </MDBRow>
-          </MDBCardBody>
-        </MDBCard>
-
-
-
-             
-                        
-
-                        
+                                  <MDBBtn color="link" className="px-2">
+                                    <MDBIcon fas icon="plus" />
+                                  </MDBBtn>
+                                </MDBCol>
+                                <MDBCol
+                                  md="3"
+                                  lg="2"
+                                  xl="2"
+                                  className="offset-lg-1"
+                                >
+                                  <MDBTypography tag="h5" className="mb-0">
+                                    ${Number(item.price) * item.quantity}
+                                  </MDBTypography>
+                                </MDBCol>
+                                {/* How to get the trash icon to show? */}
+                                <MDBCol
+                                  md="1"
+                                  lg="1"
+                                  xl="1"
+                                  className="text-end"
+                                >
+                                  <a href="#!" className="text-danger">
+                                    <MDBIcon
+                                      far
+                                      icon="trash text-danger"
+                                      size="lg"
+                                    />
+                                  </a>
+                                </MDBCol>
+                              </MDBRow>
+                            </MDBCardBody>
+                          </MDBCard>
                         </div>
                       ))}
 
@@ -182,12 +213,21 @@ const CartSomething = () => {
 
                       <div className="d-flex justify-content-between mb-4">
                         <MDBTypography tag="h5" className="text-uppercase">
-                        Items {cart.items.reduce((total, item) => total + parseInt(item.quantity, 10), 0)}
+                          Items{" "}
+                          {cart.items.reduce(
+                            (total, item) =>
+                              total + parseInt(item.quantity, 10),
+                            0
+                          )}
                         </MDBTypography>
                         <MDBTypography tag="h5">
-                      $ {cart.items.reduce((total, item) => total + (Number(item.price) * item.quantity), 0)}
-                    </MDBTypography>
-
+                          ${" "}
+                          {cart.items.reduce(
+                            (total, item) =>
+                              total + Number(item.price) * item.quantity,
+                            0
+                          )}
+                        </MDBTypography>
                       </div>
                       <MDBBtn
                         color="dark"
@@ -197,8 +237,6 @@ const CartSomething = () => {
                       >
                         Checkout
                       </MDBBtn>
-
-                
                     </div>
                   </MDBCol>
                 </MDBRow>
@@ -210,7 +248,5 @@ const CartSomething = () => {
     </section>
   );
 };
-
-
 
 export default CartSomething;
