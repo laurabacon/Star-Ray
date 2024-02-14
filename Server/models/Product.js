@@ -17,6 +17,13 @@ const productSchema = new Schema({
     type: String,
     required: true,
   },
+  primaryImage: {
+    type: String,
+    //required: true,
+  },
+  hoverImage: {
+    type: String,
+  },
 });
 
 const Product = model("product", productSchema);

@@ -10,7 +10,10 @@ import lgCandle from "../../assets/lgCandlenobackground.png";
 import scrub from "../../assets/scrubnobackground.png";
 import smlCandle from "../../assets/smlCandlenobackground.png";
 import soap from "../../assets/soapnobackground.png";
+import { useCart } from "../../utils/CartContext";
 import Cover from "../../assets/covershop.png";
+import { useCart } from "../../utils/CartContext";
+
 
 const styles = {
   container: {
@@ -41,13 +44,26 @@ const styles = {
 
 
 export default function Shop() {
+  const { dispatch } = useCart();
   const { loading, data } = useQuery(QUERY_PRODUCTS);
   const products = data?.getAllProducts || [];
   const [filterType, setFilterType] = useState("all");
-  // function wich takes in the product size and returns image source based on the input
+  const [hoveredImage, setHoveredImage] = useState("");
+
+  const handleMouseEnter = (productId, hoverImage) => {
+    setHoveredImage(hoverImage);
+    console.log(hoverImage);
+    console.log(this);
+  };
+
+  const handleMouseLeave = (productId) => {
+    setHoveredImage("");
+    console.log(hoveredImage);
+
+  };
+  // function takes in the product size and returns image source based on the input
   const getImagePath = (size) => {
     let imageSrc;
-
     if (size === "7oz yogurt container") {
       imageSrc = lgCandle;
     } else if (size === "3.5oz yogurt container") {
@@ -58,11 +74,16 @@ export default function Shop() {
       imageSrc = scrub;
     }
 
+    // console.log("Image Src:", imageSrc);
+
     return imageSrc;
   };
 
   const handleAddToCart = (product) => {
-    console.log("Product", product);
+    //TODO: check if product is already in cart
+    const addedProduct = {...product, imagePath: getImagePath(product.size), quantity: 1}
+    dispatch({ type: 'ADD_TO_CART', payload: addedProduct });
+    console.log("Product", addedProduct);
   }; //add to cart button gets card
 
   // function to filter the products based on product type. if the filtertype=all, show all products. if the filtertype is not all, the filter method is used to return a new array only including products where the product type is equal to the filtertype.
@@ -102,10 +123,14 @@ export default function Shop() {
           ) : (
             <>
               {filteredProducts.map((product) => (
-                  <Card key={product._id} style={styles.card}>
+                  <Card
+                  key={product._id}
+                  onMouseEnter={() => handleMouseEnter(this, product.hoverImage)}
+                  onMouseLeave={() => handleMouseLeave(this)} 
+                  style={styles.card}>
                     <Card.Img
                       variant="top"
-                      src={getImagePath(product.size)}
+                      src={hoveredImage === product.hoverImage ? hoveredImage : getImagePath(product.size)}
                       alt={`Product - ${product.size}`}
                     />
                     <Card.Body>
@@ -116,12 +141,7 @@ export default function Shop() {
                       <Card.Text>
                         ${product.price}
                       </Card.Text>
-                      <Button
-                        variant="primary"
-                        onClick={() => handleAddToCart(product)}
-                      >
-                        Add to cart
-                      </Button>
+                      <Button variant="primary" onClick={() => handleAddToCart(product)}>Add to cart</Button>
                     </Card.Body>
                   </Card>
               ))}
