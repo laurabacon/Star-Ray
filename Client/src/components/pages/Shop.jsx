@@ -13,6 +13,7 @@ import soap from "../../assets/soapnobackground.png";
 import { useCart } from "../../utils/CartContext";
 import Cover from "../../assets/covershop.png";
 
+
 const styles = {
   container: {
     display: "flex",
