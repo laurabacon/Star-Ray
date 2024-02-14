@@ -3,180 +3,196 @@
     "productType": "Candle",
     "scent": "Baja",
     "size": "3.5oz yogurt container",
-    "price": 8
+    "price": 8,
+    "hoverImage": "./assets/images/baja.png"
   },
   {
     "productType": "Candle",
     "scent": "Gin & Cypress",
     "size": "3.5oz yogurt container",
-    "price": 8
+    "price": 8,
+    "hoverImage": "./assets/images/gin.png"
   },
   {
     "productType": "Candle",
     "scent": "Mango",
     "size": "3.5oz yogurt container",
-    "price": 8
+    "price": 8,
+    "hoverImage": "./assets/images/mango.png"
   },
   {
     "productType": "Candle",
     "scent": "Starfruit",
     "size": "3.5oz yogurt container",
-    "price": 8
+    "price": 8,
+    "hoverImage": "./assets/images/starfruit.png"
   },
   {
     "productType": "Candle",
     "scent": "Yuxu & Hinoki",
     "size": "3.5oz yogurt container",
-    "price": 8
+    "price": 8,
+    "hoverImage": "./assets/images/Hinoki.png"
   },
   {
     "productType": "Candle",
     "scent": "Earl Grey",
     "size": "3.5oz yogurt container",
-    "price": 8
+    "price": 8,
+    "hoverImage": "./assets/images/earlGrey.png"
   },
   {
     "productType": "Candle",
     "scent": "Fresh cut apple",
     "size": "3.5oz yogurt container",
-    "price": 8
+    "price": 8,
+    "hoverImage": "./assets/images/apple.png"
   },
   {
     "productType": "Candle",
     "scent": "Agave",
     "size": "3.5oz yogurt container",
-    "price": 8
+    "price": 8,
+    "hoverImage": "./assets/images/agave.png"
   },
   {
     "productType": "Candle",
     "scent": "Pear",
     "size": "3.5oz yogurt container",
-    "price": 8
+    "price": 8,
+    "hoverImage": "./assets/images/pear.png"
   },
   {
     "productType": "Candle",
     "scent": "Baja",
     "size": "7oz yogurt container",
-    "price": 12
+    "price": 12,
+    "hoverImage": "./assets/images/baja.png"
   },
   {
     "productType": "Candle",
     "scent": "Gin & Cypress",
     "size": "7oz yogurt container",
-    "price": 12
+    "price": 12,
+    "hoverImage": "./assets/images/gin.png"
   },
   {
     "productType": "Candle",
     "scent": "Mango",
     "size": "7oz yogurt container",
-    "price": 12
+    "price": 12,
+    "hoverImage": "./assets/images/mango.png"
   },
   {
     "productType": "Candle",
     "scent": "Starfruit",
     "size": "7oz yogurt container",
-    "price": 12
+    "price": 12,
+    "hoverImage": "./assets/images/starfruit.png"
   },
   {
     "productType": "Candle",
     "scent": "Yuxu & Hinoki",
     "size": "7oz yogurt container",
-    "price": 12
+    "price": 12,
+    "hoverImage": "./assets/images/Hinoki.png"
   },
   {
     "productType": "Candle",
     "scent": "Earl Grey",
     "size": "7oz yogurt container",
-    "price": 12
+    "price": 12,
+    "hoverImage": "./assets/images/earlGrey.png"
   },
   {
     "productType": "Candle",
     "scent": "Fresh cut apple",
     "size": "7oz yogurt container",
-    "price": 12
+    "price": 12,
+    "hoverImage": "./assets/images/apple.png"
   },
   {
     "productType": "Candle",
     "scent": "Agave",
     "size": "7oz yogurt container",
-    "price": 12
+    "price": 12,
+    "hoverImage": "./assets/images/agave.png"
   },
   {
     "productType": "Candle",
     "scent": "Pear",
     "size": "7oz yogurt container",
-    "price": 12
+    "price": 12,
+    "hoverImage": "./assets/images/pear.png"
   },
   {
     "productType": "Soap",
-    "scent": "pear",
+    "scent": "Pear",
     "size": "2oz disk",
-    "price": 5
+    "price": 5,
+    "hoverImage": "./assets/images/pear.png"
   },
   {
     "productType": "Soap",
     "scent": "Mango",
     "size": "2oz disk",
-    "price": 5
+    "price": 5,
+    "hoverImage": "./assets/images/mango.png"
   },
   {
     "productType": "Soap",
     "scent": "Starfruit",
     "size": "2oz disk",
-    "price": 5
+    "price": 5,
+    "hoverImage": "./assets/images/starfruit.png"
   },
   {
     "productType": "Soap",
     "scent": "Gin & cypress",
     "size": "2oz disk",
-    "price": 5
-  },
-  {
-    "productType": "Soap",
-    "scent": "Starfruit",
-    "size": "2oz disk",
-    "price": 5
+    "price": 5,
+    "hoverImage": "./assets/images/gin.png"
   },
   {
     "productType": "Soap",
     "scent": "Agave",
     "size": "2oz disk",
-    "price": 5
+    "price": 5,
+    "hoverImage": "./assets/images/agave.png"
   },
   {
     "productType": "Scrub",
-    "scent": "pear",
+    "scent": "Pear",
     "size": "scrub size?",
-    "price": 15
+    "price": 15,
+    "hoverImage": "./assets/images/pear.png"
   },
   {
     "productType": "Scrub",
     "scent": "Mango",
     "size": "scrub size?",
-    "price": 15
+    "price": 15,
+    "hoverImage": "./assets/images/mango.png"
   },
   {
     "productType": "Scrub",
     "scent": "Starfruit",
     "size": "scrub size?",
-    "price": 15
+    "price": 15,
+    "hoverImage": "./assets/images/starfruit.png"
   },
   {
     "productType": "Scrub",
     "scent": "Gin & cypress",
     "size": "scrub size?",
-    "price": 15
-  },
-  {
-    "productType": "Scrub",
-    "scent": "Starfruit",
-    "size": "scrub size?",
-    "price": 15
+    "price": 15,
+    "hoverImage": "./assets/images/gin.png"
   },
   {
     "productType": "Scrub",
     "scent": "Agave",
     "size": "scrub size?",
-    "price": 15
+    "price": 15,
+    "hoverImage": "./assets/images/agave.png"
   }
 ]
