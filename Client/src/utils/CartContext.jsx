@@ -9,6 +9,15 @@ const cartReducer = (state, action) => {
         ...state,
         items: [...state.items, action.payload],
       };
+      case 'UPDATE_QUANTITY':
+
+        const newItems = state.items.map(item => {
+          return item._id !== action.payload._id ? item : action.payload})
+
+        return {
+          ...state,
+          items: [...newItems],
+        };
   
     default:
       return state;

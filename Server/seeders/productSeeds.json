@@ -95,6 +95,7 @@
     "scent": "Yuxu & Hinoki",
     "size": "7oz yogurt container",
     "price": 12,
+    "primaryImage": "./assets/images/lgCandle.jpg",
     "hoverImage": "./assets/images/Hinoki.png"
   },
   {
