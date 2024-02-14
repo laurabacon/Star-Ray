@@ -59,6 +59,7 @@ export default function Shop() {
   const handleMouseLeave = (productId) => {
     setHoveredImage("");
     console.log(hoveredImage);
+    
   };
   // function takes in the product size and returns image source based on the input
   const getImagePath = (size) => {
@@ -82,7 +83,7 @@ export default function Shop() {
     //TODO: check if product is already in cart
     const addedProduct = {
       ...product,
-      imagePath: getImagePath(product.size),
+      primaryImage: getImagePath(product.size),
       quantity: 1,
     };
     dispatch({ type: "ADD_TO_CART", payload: addedProduct });

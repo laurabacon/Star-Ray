@@ -29,9 +29,17 @@ const CartSomething = () => {
     }
   }, [dispatch]);
 
+    
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
+  console.log(cart);
+
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
 
   console.log(isAuthenticated);
   console.log(AuthService);
@@ -69,6 +77,8 @@ const CartSomething = () => {
     const updatedItem = { ...item, quantity: event.target.value };
     dispatch({ type: "UPDATE_QUANTITY", payload: updatedItem });
   };
+
+
 
   // const getImagePath = (size) => {
   //   let imageSrc;
