@@ -1,7 +1,9 @@
 ## PRIORITY ONE
 
-add to cart
+
 logout button
+place order button redirect to login page if logged out -halden
+
 
 ## PRIORITY TWO
 

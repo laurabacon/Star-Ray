@@ -12,19 +12,17 @@ import smlCandle from "../../assets/smlCandlenobackground.png";
 import soap from "../../assets/soapnobackground.png";
 import { useCart } from "../../utils/CartContext";
 import Cover from "../../assets/covershop.png";
-import { useCart } from "../../utils/CartContext";
-
 
 const styles = {
   container: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
   },
   cardContainer: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "center",
   },
   card: {
     width: "18rem",
@@ -39,9 +37,7 @@ const styles = {
   //   width: "100%",
   //   height: "25%",
   // },
-
 };
-
 
 export default function Shop() {
   const { dispatch } = useCart();
@@ -59,7 +55,6 @@ export default function Shop() {
   const handleMouseLeave = (productId) => {
     setHoveredImage("");
     console.log(hoveredImage);
-
   };
   // function takes in the product size and returns image source based on the input
   const getImagePath = (size) => {
@@ -81,8 +76,12 @@ export default function Shop() {
 
   const handleAddToCart = (product) => {
     //TODO: check if product is already in cart
-    const addedProduct = {...product, imagePath: getImagePath(product.size), quantity: 1}
-    dispatch({ type: 'ADD_TO_CART', payload: addedProduct });
+    const addedProduct = {
+      ...product,
+      imagePath: getImagePath(product.size),
+      quantity: 1,
+    };
+    dispatch({ type: "ADD_TO_CART", payload: addedProduct });
     console.log("Product", addedProduct);
   }; //add to cart button gets card
 
@@ -90,14 +89,16 @@ export default function Shop() {
   const filteredProducts =
     filterType === "all"
       ? products
-      : products.filter((product) => {console.log(filterType)
-        console.log(product.productType); 
-        return product.productType === filterType}); 
-      console.log(filteredProducts);
+      : products.filter((product) => {
+          console.log(filterType);
+          console.log(product.productType);
+          return product.productType === filterType;
+        });
+  console.log(filteredProducts);
 
   return (
     <div style={styles.container}>
-    {/* <div style={styles.coverImageContainer}>
+      {/* <div style={styles.coverImageContainer}>
       <img style={styles.coverImage} src={Cover} alt="" />
     </div> */}
       <p>Filter By: </p>
@@ -106,48 +107,62 @@ export default function Shop() {
         <Button className="custom-button" onClick={() => setFilterType("all")}>
           All Products
         </Button>{" "}
-        <Button className="custom-button" onClick={() => setFilterType("Candle")}>
+        <Button
+          className="custom-button"
+          onClick={() => setFilterType("Candle")}
+        >
           Candles
         </Button>{" "}
         <Button className="custom-button" onClick={() => setFilterType("Soap")}>
           Soaps
         </Button>{" "}
-        <Button className="custom-button" onClick={() => setFilterType("Scrub")}>
+        <Button
+          className="custom-button"
+          onClick={() => setFilterType("Scrub")}
+        >
           Scrubs
         </Button>
       </div>
       {/* section that maps over all products and renders them to the page as bootstrap cards */}
       <div style={styles.cardContainer}>
-          {loading ? (
-            <div>Loading...</div>
-          ) : (
-            <>
-              {filteredProducts.map((product) => (
-                  <Card
-                  key={product._id}
-                  onMouseEnter={() => handleMouseEnter(this, product.hoverImage)}
-                  onMouseLeave={() => handleMouseLeave(this)} 
-                  style={styles.card}>
-                    <Card.Img
-                      variant="top"
-                      src={hoveredImage === product.hoverImage ? hoveredImage : getImagePath(product.size)}
-                      alt={`Product - ${product.size}`}
-                    />
-                    <Card.Body>
-                      <Card.Title>
-                        {product.scent} {product.productType}
-                      </Card.Title>
-                      <Card.Title>{product.size}</Card.Title>
-                      <Card.Text>
-                        ${product.price}
-                      </Card.Text>
-                      <Button variant="primary" onClick={() => handleAddToCart(product)}>Add to cart</Button>
-                    </Card.Body>
-                  </Card>
-              ))}
-            </>
-          )}
-        </div>
+        {loading ? (
+          <div>Loading...</div>
+        ) : (
+          <>
+            {filteredProducts.map((product) => (
+              <Card
+                key={product._id}
+                onMouseEnter={() => handleMouseEnter(this, product.hoverImage)}
+                onMouseLeave={() => handleMouseLeave(this)}
+                style={styles.card}
+              >
+                <Card.Img
+                  variant="top"
+                  src={
+                    hoveredImage === product.hoverImage
+                      ? hoveredImage
+                      : getImagePath(product.size)
+                  }
+                  alt={`Product - ${product.size}`}
+                />
+                <Card.Body>
+                  <Card.Title>
+                    {product.scent} {product.productType}
+                  </Card.Title>
+                  <Card.Title>{product.size}</Card.Title>
+                  <Card.Text>${product.price}</Card.Text>
+                  <Button
+                    variant="primary"
+                    onClick={() => handleAddToCart(product)}
+                  >
+                    Add to cart
+                  </Button>
+                </Card.Body>
+              </Card>
+            ))}
+          </>
+        )}
       </div>
+    </div>
   );
 }
