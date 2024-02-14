@@ -11,9 +11,9 @@ import scrub from "../../assets/scrubnobackground.png";
 import smlCandle from "../../assets/smlCandlenobackground.png";
 import soap from "../../assets/soapnobackground.png";
 import { useCart } from "../../utils/CartContext";
-import Cover from "../../assets/covershop.png";
-import { useCart } from "../../utils/CartContext";
-import Cover from "../../assets/covershop.png";
+// import Cover from "../../assets/covershop.png";
+// import { useCart } from "../../utils/CartContext";
+// import Cover from "../../assets/covershop.png";
 
 
 const styles = {

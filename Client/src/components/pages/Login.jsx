@@ -1,4 +1,3 @@
-// Login.js
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER, ADD_USER } from "../../utils/mutations";
@@ -57,31 +56,58 @@ function Login() {
   };
 
   return (
-    <div>
+    <div style={{ textAlign: "center", marginTop: "50px" }}>
       <input
         type="text"
         placeholder="Name"
         value={name}
         onChange={(e) => setName(e.target.value)}
+        style={inputStyle}
       />
+      <br />
       <input
         type="password"
         placeholder="Password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
+        style={inputStyle}
       />
+      <br />
       <input
         type="text"
         placeholder="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
+        style={inputStyle}
       />
-
-      <button onClick={handleLogin}>Login</button>
-      <button onClick={handleCreateUser}>Create Account</button>
-      <button onClick={handleLogout}>Logout</button> 
+      <br />
+      <button style={buttonStyle} onClick={handleLogin}>
+        Login
+      </button>
+      <button style={buttonStyle} onClick={handleCreateUser}>
+        Create Account
+      </button>
+      <button style={buttonStyle} onClick={handleLogout}>
+        Logout
+      </button>
     </div>
   );
 }
+
+const inputStyle = {
+  width: "200px",
+  padding: "10px",
+  marginBottom: "10px",
+};
+
+const buttonStyle = {
+  padding: "10px 20px",
+  margin: "10px",
+  backgroundColor: "#007bff",
+  color: "#fff",
+  border: "none",
+  borderRadius: "5px",
+  cursor: "pointer",
+};
 
 export default Login;
