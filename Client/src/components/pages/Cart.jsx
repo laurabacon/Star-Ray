@@ -77,6 +77,10 @@ const CartSomething = () => {
     )}&body=${encodeURIComponent("The items you are requesting:\n\n" + body)}`;
 
     window.location.href = mailtoLink;
+
+    dispatch({ type: "CLEAR_CART"});
+
+
   };
 
   const handleQuantity = (action, itemId) => {
