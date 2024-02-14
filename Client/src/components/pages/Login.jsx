@@ -56,37 +56,64 @@ function Login() {
   };
 
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
-      <input
-        type="text"
-        placeholder="Name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        style={inputStyle}
-      />
-      <br />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        style={inputStyle}
-      />
-      <br />
-      <input
-        type="text"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        style={inputStyle}
-      />
-      <br />
-      <button style={buttonStyle} onClick={handleLogin}>
-        Login
-      </button>
-      <button style={buttonStyle} onClick={handleCreateUser}>
-        Create Account
-      </button>
+    <div
+      style={{
+        display: "flex",
+        textAlign: "center",
+        justifyContent: "center",
+        marginTop: "50px",
+      }}
+    >
+      <div className="createAccount">
+        <input
+          type="text"
+          placeholder="Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          style={inputStyle}
+        />
+        <br />
+        <input
+          type="text"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          style={inputStyle}
+        />
+        <br />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          style={inputStyle}
+        />
+        <br />
+        <button style={buttonStyle} onClick={handleCreateUser}>
+          Create Account
+        </button>
+      </div>
+      <div className="logIn">
+        <input
+          type="text"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          style={inputStyle}
+        />
+        <br />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          style={inputStyle}
+        />
+        <br />
+        <button style={buttonStyle} onClick={handleLogin}>
+          Login
+        </button>
+      </div>
       <button style={buttonStyle} onClick={handleLogout}>
         Logout
       </button>
