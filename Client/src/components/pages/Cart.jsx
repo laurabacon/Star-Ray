@@ -138,10 +138,8 @@ const CartSomething = () => {
                                   <MDBCardImage
                                     className="rounded-3"
                                     fluid
-                                    // src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img1.webp"
-                                    // alt="Cotton T-shirt"
                                   />
-                                  <img src={item.primaryImage} alt="ehhhhh" />
+                                  <img src={item.primaryImage} alt="ehhhhh" fluid className="rounded-3" style={{ width: "65px" }}/>
                                 </MDBCol>
                                 <MDBCol md="3" lg="3" xl="3">
                                   <p className="lead fw-normal mb-2">
