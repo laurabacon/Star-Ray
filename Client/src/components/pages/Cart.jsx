@@ -94,7 +94,6 @@ const CartSomething = () => {
     const updatedItem = { ...item, quantity: updatedQuantity };
     dispatch({ type: "UPDATE_QUANTITY", payload: updatedItem });
   };
-  
 
   return (
     <section className="h-100 h-custom" style={{ backgroundColor: "#eee" }}>
