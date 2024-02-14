@@ -13,7 +13,7 @@ const styles = {
     margin: "0 auto",
     border: "none",
     position: "relative",
-    backgroundColor: "#git pull origin YOUR_BRANCH_NAME",
+    backgroundColor: "#CFB4A4",
     paddingTop: '10px'
   },
   col: {
@@ -86,27 +86,29 @@ const styles = {
   },
   canvas: {
     position: "absolute",
-    top: "35%", 
+    top: "38%", 
     transform: "translateY(-50%)", 
     left: 0,
     width: "100%",
-    height: "9%",
+    height: "8%",
     zIndex: 0,
     backgroundColor: "#CFB4A4",
     },
   break: {
-    paddingTop: '1%'
+    paddingTop: '1%',
+    backgroundColor: "#CFB4A4",
   },
   div: {
-    backgroundColor: "#CFB4A4",
+
     paddingTop: "15px"
   },
   brandImage: {
-    width: '80%', 
     height: 'auto',
+    width: '80%', 
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+    paddingTop: "10px"
   },
   background: {
     backgroundColor: "#CFB4A4",
@@ -117,6 +119,12 @@ const styles = {
     height: 'auto',
     paddingTop: '30px',
     paddingBottom: '30px',
+  },
+  eventText: {
+    padding: "300px", 
+  width: "100%", 
+  textAlign: "center", 
+  zIndex: 1,
   }
   
 };
@@ -166,7 +174,7 @@ export default function Home() {
             </Card.Body> */
           /* </Card>
       </Row> */}
-      <Row style={styles.break}>
+      <div style={styles.break}>
         <canvas id="canvas-basic" style={styles.canvas}></canvas>
         <blockquote className="blockquote" style={styles.blockquote}>
           <p style={styles.col}>
@@ -174,14 +182,12 @@ export default function Home() {
           </p>
           <footer style={styles.col} className="blockquote-footer">Unknown Author</footer>
         </blockquote>
-      </Row>
+      </div>
 
-      <Row className="creator-card" >
-        <div style={styles.div}>
-          <div style={styles.eventCardBody}>
-            <img style={styles.brandImage} src={brandPic} alt="" />
-          </div>
-          </div>
+      <div className="creator-card" >
+        <Row style={{ justifyContent: "center" }}>
+          <img style={styles.brandImage} src={brandPic} alt="" />
+        </Row>
         {/* <Col>
           <Card style={styles.brandCardBody}>
             <Card.Body style={{ ...styles.brandCardBody, padding: '0 !important' }}>
@@ -197,12 +203,12 @@ export default function Home() {
             </Card.Body>
           </Card>
         </Col> */}
-      </Row>
+      </div>
 
       <Row className="upcoming-events-card">
         <Card style={styles.eventCardBody}>
           <Card.Img style={styles.eventImage} src={eventsPic} alt="Card image" />
-            <Card.ImgOverlay>
+            <Card.ImgOverlay style={styles.eventText}>
                 <Card.Text>
                   Date, Time, and Location
                 </Card.Text>
