@@ -59,7 +59,6 @@ export default function Shop() {
   // function takes in the product size and returns image source based on the input
   const getImagePath = (size) => {
     let imageSrc;
-
     if (size === "7oz yogurt container") {
       imageSrc = lgCandle;
     } else if (size === "3.5oz yogurt container") {
