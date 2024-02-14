@@ -32,10 +32,11 @@ const CartSomething = () => {
       dispatch({ type: "LOAD_CART", payload: JSON.parse(savedCart) });
     }
   }, [dispatch]);
-
+    
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
+  console.log(cart);
 
   console.log(isAuthenticated);
   console.log(AuthService);
@@ -73,6 +74,8 @@ const CartSomething = () => {
     const updatedItem = { ...item, quantity: event.target.value };
     dispatch({ type: "UPDATE_QUANTITY", payload: updatedItem });
   };
+
+
 
   // const getImagePath = (size) => {
   //   let imageSrc;
