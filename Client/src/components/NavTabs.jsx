@@ -5,8 +5,10 @@ import shopBag from "../assets/shoppingbag.png";
 const styles = {
   paddingLeft: {
     paddingLeft: "20px",
+    backgroundColor: "#CFB4A4",
   },
   background: {
+
   }
 };
 
