@@ -1,13 +1,16 @@
 ## PRIORITY ONE
 
 
-logout button
-place order button redirect to login page if logged out -halden
+footer link to login page
+
+styling on login page
 
 
 ## PRIORITY TWO
 
-email.js
+
 readme
+
 slideshow
+
 deployment
