@@ -5,14 +5,16 @@ import lgCandle from "../../assets/hero.png";
 import createPic from "../../assets/logo.jpg";
 import craftFair from "../../assets/craft.png";
 import hero from "../../assets/secondHero.png";
+import brandPic from "../../assets/brandingNoback.png";
+import eventsPic from "../../assets/eventsPic.png";
 
 const styles = {
   container: {
     margin: "0 auto",
     border: "none",
-    padding: "5px",
     position: "relative",
-    backgroundColor: "#CFB4A4",
+    backgroundColor: "#git pull origin YOUR_BRANCH_NAME",
+    paddingTop: '10px'
   },
   col: {
     display: "flex",
@@ -84,15 +86,30 @@ const styles = {
   },
   canvas: {
     position: "absolute",
-    top: "55%", 
+    top: "34%", 
     transform: "translateY(-50%)", 
     left: 0,
     width: "100%",
-    height: "41%",
+    height: "9%",
     zIndex: 0,
+    backgroundColor: "#CFB4A4",
     },
   break: {
     paddingTop: '1%'
+  },
+  div: {
+    backgroundColor: "#CFB4A4",
+    paddingTop: "15px"
+  },
+  brandImage: {
+    width: '90%', 
+    height: 'auto',
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  background: {
+    backgroundColor: "#CFB4A4",
   }
   
 };
@@ -152,8 +169,13 @@ export default function Home() {
         </blockquote>
       </Row>
 
-      <Row className="creator-card">
-        <Col>
+      <Row className="creator-card" >
+        <div style={styles.div}>
+          <div style={styles.eventCardBody}>
+            <img style={styles.brandImage} src={brandPic} alt="" />
+          </div>
+          </div>
+        {/* <Col>
           <Card style={styles.brandCardBody}>
             <Card.Body style={{ ...styles.brandCardBody, padding: '0 !important' }}>
               <Row>
@@ -167,7 +189,7 @@ export default function Home() {
               </Row>
             </Card.Body>
           </Card>
-        </Col>
+        </Col> */}
       </Row>
 
       <Row className="upcoming-events-card">
@@ -176,10 +198,6 @@ export default function Home() {
             <Row>
               <Col style={styles.col}>
                 <h5>Check out our upcoming events!</h5>
-                  <Card.Text>Event 1: Date and Location</Card.Text>
-                  <Card.Text>Event 2: Date and Location</Card.Text>
-                  <Card.Text>Event 3: Date and Location</Card.Text>
-                  <Card.Text>Event 4: Date and Location</Card.Text>
                 </Col>
                 <Col>
                 <Card.Img style={styles.image} src={craftFair}/>
