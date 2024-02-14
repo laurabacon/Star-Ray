@@ -15,11 +15,7 @@ import {
   MDBTypography,
 } from "mdb-react-ui-kit";
 import { useCart } from "../../utils/CartContext";
-// import { QUERY_PRODUCTS } from "../../utils/queries";
-// import lgCandle from "../../assets/lgCandlenobackground.png";
-// import scrub from "../../assets/scrubnobackground.png";
-// import smlCandle from "../../assets/smlCandlenobackground.png";
-// import soap from "../../assets/soapnobackground.png";
+
 
 const CartSomething = () => {
   const { cart, dispatch } = useCart();
@@ -32,11 +28,18 @@ const CartSomething = () => {
       dispatch({ type: "LOAD_CART", payload: JSON.parse(savedCart) });
     }
   }, [dispatch]);
+
     
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
   console.log(cart);
+
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
 
   console.log(isAuthenticated);
   console.log(AuthService);
@@ -190,12 +193,8 @@ const CartSomething = () => {
                                   xl="1"
                                   className="text-end"
                                 >
-                                  <a href="#!" className="text-danger">
-                                    <MDBIcon
-                                      far
-                                      icon="trash text-danger"
-                                      size="lg"
-                                    />
+                                  <a href="#!" style={{ color: "#cecece" }}>
+                                  <MDBIcon far icon="trash-alt" className='ms-1' size='2x'/>
                                   </a>
                                 </MDBCol>
                               </MDBRow>
