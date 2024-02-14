@@ -10,6 +10,10 @@ function Login() {
   const [loginUser] = useMutation(LOGIN_USER);
   const [addUser] = useMutation(ADD_USER);
 
+  const redirectToShop = () => {
+    window.location.href = "/shop";
+  };
+
   const handleLogin = async () => {
     try {
       const { data } = await loginUser({
@@ -22,6 +26,7 @@ function Login() {
         // Store the token in local storage
         localStorage.setItem("id_token", token);
         console.log("Login successful");
+        redirectToShop();
       } else {
         alert("Failed to login");
       }
@@ -41,6 +46,7 @@ function Login() {
       if (token) {
         // Redirect or perform actions upon successful account creation
         console.log("Account created successfully");
+        alert("Account created successfully! Please login to begin shopping.");
       } else {
         alert("Failed to create account");
       }
@@ -51,6 +57,7 @@ function Login() {
 
   const handleLogout = () => {
     localStorage.removeItem("id_token");
+    alert("Logging out...Successful. Have a good day!");
     //redirect
     console.log("Logged out");
   };
@@ -113,10 +120,10 @@ function Login() {
         <button style={buttonStyle} onClick={handleLogin}>
           Login
         </button>
-      </div>
-      <button style={buttonStyle} onClick={handleLogout}>
+        <button style={buttonStyle} onClick={handleLogout}>
         Logout
       </button>
+      </div>
     </div>
   );
 }

@@ -164,35 +164,35 @@
   {
     "productType": "Scrub",
     "scent": "Pear",
-    "size": "scrub size?",
+    "size": "5oz",
     "price": 15,
     "hoverImage": "./assets/images/pear.png"
   },
   {
     "productType": "Scrub",
     "scent": "Mango",
-    "size": "scrub size?",
+    "size": "5oz",
     "price": 15,
     "hoverImage": "./assets/images/mango.png"
   },
   {
     "productType": "Scrub",
     "scent": "Starfruit",
-    "size": "scrub size?",
+    "size": "5oz",
     "price": 15,
     "hoverImage": "./assets/images/starfruit.png"
   },
   {
     "productType": "Scrub",
     "scent": "Gin & cypress",
-    "size": "scrub size?",
+    "size": "5oz",
     "price": 15,
     "hoverImage": "./assets/images/gin.png"
   },
   {
     "productType": "Scrub",
     "scent": "Agave",
-    "size": "scrub size?",
+    "size": "5oz",
     "price": 15,
     "hoverImage": "./assets/images/agave.png"
   }

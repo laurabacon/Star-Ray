@@ -91,6 +91,9 @@ const CartSomething = () => {
     const updatedItem = { ...item, quantity: updatedQuantity };
     dispatch({ type: "UPDATE_QUANTITY", payload: updatedItem });
   };
+  const redirectToShop = () => {
+    window.location.href = "/shop";
+  };
 
   return (
     <section className="h-100 h-custom" style={{ backgroundColor: "#eee" }}>
@@ -201,8 +204,10 @@ const CartSomething = () => {
 
                       <div className="pt-5">
                         <MDBTypography tag="h6" className="mb-0">
+                        <a href="#!" onClick={redirectToShop}>
                           <MDBIcon fas icon="long-arrow-alt-left me-2" /> Back
                           to shop
+                          </a>
                         </MDBTypography>
                       </div>
                     </div>
