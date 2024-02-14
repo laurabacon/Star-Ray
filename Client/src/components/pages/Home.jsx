@@ -86,11 +86,11 @@ const styles = {
   },
   canvas: {
     position: "absolute",
-    top: "34%", 
+    top: "35%", 
     transform: "translateY(-50%)", 
     left: 0,
     width: "100%",
-    height: "9%",
+    height: "8%",
     zIndex: 0,
     backgroundColor: "#CFB4A4",
     },
@@ -102,7 +102,7 @@ const styles = {
     paddingTop: "15px"
   },
   brandImage: {
-    width: '90%', 
+    width: '80%', 
     height: 'auto',
     display: "flex",
     justifyContent: "center",
