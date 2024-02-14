@@ -64,9 +64,10 @@ const CartSomething = () => {
     const body = cart.items
       .map(
         (item) =>
-          `${item.scent} ${item.productType} - Size: ${item.size}, Quantity: ${
-            item.quantity
-          }, Price: $${Number(item.price) * item.quantity}`
+          `* ${item.scent} ${item.productType} 
+            Size: ${item.size} 
+            Quantity: ${item.quantity} 
+            Price: $${Number(item.price) * item.quantity}\n\n`
       )
       .join("\n");
 
