@@ -41,7 +41,7 @@ const styles = {
 };
 
 export default function Shop() {
-  const { dispatch } = useCart();
+  const { cart, dispatch } = useCart();
   const { loading, data } = useQuery(QUERY_PRODUCTS);
   const products = data?.getAllProducts || [];
   const [filterType, setFilterType] = useState("all");
