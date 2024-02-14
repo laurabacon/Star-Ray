@@ -12,6 +12,7 @@ const typeDefs = `
     size: String
     price: String
     primaryImage: String
+    hoverImage: String
   }
   type Auth {
     token: ID!

@@ -4,6 +4,7 @@ import { Container, Row, Col, Card, CardImg, CardText } from "react-bootstrap";
 import lgCandle from "../../assets/hero.png";
 import createPic from "../../assets/logo.jpg";
 import craftFair from "../../assets/craft.png";
+import hero from "../../assets/secondHero.png";
 
 const styles = {
   container: {
@@ -11,6 +12,7 @@ const styles = {
     border: "none",
     padding: "5px",
     position: "relative",
+    backgroundColor: "#CFB4A4",
   },
   col: {
     display: "flex",
@@ -24,25 +26,30 @@ const styles = {
     overflow: "hidden",
     border: "none",
   },
+  imageContainer: {
+    width: '100%', 
+    height: '50%',
+  },
   image:{
-    width: '75%', 
+    width: '100%', 
     height: 'auto',
   },
   heroCard: {
     overflow: "hidden",
     border: "none",
+    backgroundColor: "#CFB4A4",
   },
   brandCard: {
     height: "100%",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#F4F2ED",
+    backgroundColor: "#CFB4A4",
     border: "none",
     padding: 0,
   },
   brandCardBody: {
-    backgroundColor: "#F4F2ED",
+    backgroundColor: "#CFB4A4",
     border: "none",
     padding: 0,
   },
@@ -68,7 +75,7 @@ const styles = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#F4F2ED",
+    backgroundColor: "#CFB4A4",
     border: "none",
     padding: 0,
   },
@@ -77,13 +84,16 @@ const styles = {
   },
   canvas: {
     position: "absolute",
-    top: "50%", 
+    top: "55%", 
     transform: "translateY(-50%)", 
     left: 0,
     width: "100%",
-    height: "30%",
+    height: "41%",
     zIndex: 0,
     },
+  break: {
+    paddingTop: '1%'
+  }
   
 };
 
@@ -111,9 +121,13 @@ export default function Home() {
   
   return (
     <div style={styles.container}>
-      <Row className="hero-product-card">
-        <Card style={styles.heroCard}>
-          <Card.Body style={{ ...styles.cardBody, padding: '0 !important'}}>
+      <div style={styles.eventCardBody}>
+      <img style={styles.image} src={hero} alt="" />
+      </div>
+      {/* <Row className="hero-product-card">
+        <Card>
+          <CardImg style={styles.image} src={hero}/> */
+          /* <Card.Body style={{ ...styles.cardBody, padding: '0 !important'}}>
             <Row>
               <Col style={styles.col}>
                 <Card.Img style={styles.image} src={lgCandle}/>
@@ -125,10 +139,10 @@ export default function Home() {
                 <CardText>Current products include Soy Wax Candles, Goat Milk Soaps, and Himalayan Salt Scrubs. View the shop page to view my entire selection.</CardText>
               </Col>
             </Row>
-            </Card.Body>
-          </Card>
-      </Row>
-      <Row>
+            </Card.Body> */
+          /* </Card>
+      </Row> */}
+      <Row style={styles.break}>
         <canvas id="canvas-basic" style={styles.canvas}></canvas>
         <blockquote className="blockquote" style={styles.blockquote}>
           <p style={styles.col}>

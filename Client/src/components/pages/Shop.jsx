@@ -46,10 +46,22 @@ export default function Shop() {
   const { loading, data } = useQuery(QUERY_PRODUCTS);
   const products = data?.getAllProducts || [];
   const [filterType, setFilterType] = useState("all");
-  // function wich takes in the product size and returns image source based on the input
+  const [hoveredImage, setHoveredImage] = useState("");
+
+  const handleMouseEnter = (productId, hoverImage) => {
+    setHoveredImage(hoverImage);
+    console.log(hoverImage);
+    console.log(this);
+  };
+
+  const handleMouseLeave = (productId) => {
+    setHoveredImage("");
+    console.log(hoveredImage);
+
+  };
+  // function takes in the product size and returns image source based on the input
   const getImagePath = (size) => {
     let imageSrc;
-
     if (size === "7oz yogurt container") {
       imageSrc = lgCandle;
     } else if (size === "3.5oz yogurt container") {
@@ -59,6 +71,8 @@ export default function Shop() {
     } else {
       imageSrc = scrub;
     }
+
+    // console.log("Image Src:", imageSrc);
 
     return imageSrc;
   };
@@ -107,10 +121,14 @@ export default function Shop() {
           ) : (
             <>
               {filteredProducts.map((product) => (
-                  <Card key={product._id} style={styles.card}>
+                  <Card
+                  key={product._id}
+                  onMouseEnter={() => handleMouseEnter(this, product.hoverImage)}
+                  onMouseLeave={() => handleMouseLeave(this)} 
+                  style={styles.card}>
                     <Card.Img
                       variant="top"
-                      src={getImagePath(product.size)}
+                      src={hoveredImage === product.hoverImage ? hoveredImage : getImagePath(product.size)}
                       alt={`Product - ${product.size}`}
                     />
                     <Card.Body>
@@ -121,12 +139,7 @@ export default function Shop() {
                       <Card.Text>
                         ${product.price}
                       </Card.Text>
-                      <Button
-                        variant="primary"
-                        onClick={() => handleAddToCart(product)}
-                      >
-                        Add to cart
-                      </Button>
+                      <Button variant="primary" onClick={() => handleAddToCart(product)}>Add to cart</Button>
                     </Card.Body>
                   </Card>
               ))}

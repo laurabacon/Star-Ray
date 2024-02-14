@@ -50,6 +50,12 @@ function Login() {
     }
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("id_token");
+    //redirect
+    console.log("Logged out");
+  };
+
   return (
     <div>
       <input
@@ -73,6 +79,7 @@ function Login() {
 
       <button onClick={handleLogin}>Login</button>
       <button onClick={handleCreateUser}>Create Account</button>
+      <button onClick={handleLogout}>Logout</button> 
     </div>
   );
 }
