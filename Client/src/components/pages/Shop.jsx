@@ -11,8 +11,8 @@ import scrub from "../../assets/scrubnobackground.png";
 import smlCandle from "../../assets/smlCandlenobackground.png";
 import soap from "../../assets/soapnobackground.png";
 import { useCart } from "../../utils/CartContext";
-
-import Cover from "../../assets/covershop.png";
+import { Link } from "react-router-dom";
+import {MDBIcon} from "mdb-react-ui-kit"; 
 
 const styles = {
   container: {
@@ -46,18 +46,7 @@ export default function Shop() {
   const { loading, data } = useQuery(QUERY_PRODUCTS);
   const products = data?.getAllProducts || [];
   const [filterType, setFilterType] = useState("all");
-  const [hoveredImage, setHoveredImage] = useState("");
 
-  const handleMouseEnter = (productId, hoverImage) => {
-    setHoveredImage(hoverImage);
-    console.log(hoverImage);
-    console.log(this);
-  };
-
-  const handleMouseLeave = (productId) => {
-    setHoveredImage("");
-    console.log(hoveredImage);
-  };
   // function takes in the product size and returns image source based on the input
   const getImagePath = (size) => {
     let imageSrc;
@@ -134,18 +123,14 @@ export default function Shop() {
             {filteredProducts.map((product) => (
               <Card
                 key={product._id}
-                onMouseEnter={() => handleMouseEnter(this, product.hoverImage)}
-                onMouseLeave={() => handleMouseLeave(this)}
                 style={styles.card}
               >
                 <Card.Img
                   variant="top"
-                  src={
-                    hoveredImage === product.hoverImage
-                      ? hoveredImage
-                      : getImagePath(product.size)
-                  }
+                  src={getImagePath(product.size)}
                   alt={`Product - ${product.size}`}
+                  onMouseEnter={(e)=>e.target.src = product.hoverImage}
+                  onMouseLeave={(e)=>e.target.src = getImagePath(product.size)}
                 />
                 <Card.Body>
                   <Card.Title>
@@ -153,12 +138,19 @@ export default function Shop() {
                   </Card.Title>
                   <Card.Title>{product.size}</Card.Title>
                   <Card.Text>${product.price}</Card.Text>
-                  <Button
+                  {cart.items.find(item => item._id === product._id) ?
+                  <Link to="/Cart">
+                    <Button
+                    variant="success"
+                  >
+                    <MDBIcon fas icon="shopping-cart" /> Goodness Added!
+                  </Button></Link>
+                  : <Button
                     variant="primary"
                     onClick={() => handleAddToCart(product)}
                   >
                     Add to cart
-                  </Button>
+                  </Button>}
                 </Card.Body>
               </Card>
             ))}
