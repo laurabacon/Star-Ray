@@ -54,7 +54,12 @@ const CartSomething = () => {
       navigate("/Login");
       return;
     }
-
+    const total = cart.items.reduce(
+      (total, item) =>
+        total + Number(item.price) * item.quantity,
+      0
+    )
+    const totalWording = `\nTotal: $${total}`
     const email = "jennystarphillips@gmail.com";
     const subject = "New Order";
     const body = cart.items
@@ -70,7 +75,7 @@ const CartSomething = () => {
     // Create a mailto link
     const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(
       subject
-    )}&body=${encodeURIComponent("The items you are requesting:\n\n" + body)}`;
+    )}&body=${encodeURIComponent("The items you are requesting:\n\n" + body + totalWording)}`;
 
     window.location.href = mailtoLink;
 
