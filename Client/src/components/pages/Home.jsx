@@ -80,6 +80,7 @@ const styles = {
     backgroundColor: "#CFB4A4",
     border: "none",
     padding: 0,
+    boxShadow: "none",
   },
   paddingLeft: {
     paddingLeft: "40px",

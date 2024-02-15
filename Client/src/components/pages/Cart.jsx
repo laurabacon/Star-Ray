@@ -54,7 +54,12 @@ const CartSomething = () => {
       navigate("/Login");
       return;
     }
-
+    const total = cart.items.reduce(
+      (total, item) =>
+        total + Number(item.price) * item.quantity,
+      0
+    )
+    const totalWording = `\nTotal: $${total}`
     const email = "jennystarphillips@gmail.com";
     const subject = "New Order";
     const body = cart.items
@@ -70,7 +75,7 @@ const CartSomething = () => {
     // Create a mailto link
     const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(
       subject
-    )}&body=${encodeURIComponent("The items you are requesting:\n\n" + body)}`;
+    )}&body=${encodeURIComponent("The items you are requesting:\n\n" + body + totalWording)}`;
 
     window.location.href = mailtoLink;
 
@@ -179,7 +184,7 @@ const CartSomething = () => {
                                     onChange={(e) =>
                                       handleQuantity(
                                         "update",
-                                        item._id,
+                                        //item._id,
                                         e.target.value
                                       )
                                     }
@@ -212,7 +217,6 @@ const CartSomething = () => {
                                   xl="1"
                                   className="text-end"
                                 >
-
                                   <a href="#!" style={{ color: "#cecece" }} onClick={() => handleRemoveItem(item._id)}>
                                   <MDBIcon far icon="trash-alt" className='ms-1' size='2x'/>
 
