@@ -6,6 +6,8 @@ function Login() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
 
   const [loginUser] = useMutation(LOGIN_USER);
   const [addUser] = useMutation(ADD_USER);
@@ -17,7 +19,7 @@ function Login() {
   const handleLogin = async () => {
     try {
       const { data } = await loginUser({
-        variables: { email, password },
+        variables: { email: loginEmail, password: loginPassword },
       });
 
       const token = data?.login?.token;
@@ -104,16 +106,16 @@ function Login() {
         <input
           type="text"
           placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          value={loginEmail}
+          onChange={(e) => setLoginEmail(e.target.value)}
           style={inputStyle}
         />
         <br />
         <input
           type="password"
           placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          value={loginPassword}
+          onChange={(e) => setLoginPassword(e.target.value)}
           style={inputStyle}
         />
         <br />
