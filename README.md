@@ -25,6 +25,8 @@ Use the buttons in the nav bar to navigate the site. From the shop page, use the
 
 ## Link to Deployed App
 
+https://lit-eyrie-12834-5b6e0706190e.herokuapp.com
+
 ## Licence
 
 This application is covered under the MIT License license.
