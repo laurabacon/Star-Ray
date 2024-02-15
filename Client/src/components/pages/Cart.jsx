@@ -184,7 +184,7 @@ const CartSomething = () => {
                                     onChange={(e) =>
                                       handleQuantity(
                                         "update",
-                                        item._id,
+                                        //item._id,
                                         e.target.value
                                       )
                                     }
