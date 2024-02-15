@@ -103,7 +103,7 @@ export default function Shop() {
       {/* <div style={styles.coverImageContainer}>
       <img style={styles.coverImage} src={Cover} alt="" />
     </div> */}
-      <p>Filter By: </p>
+      <p className="text-white pt-5">Filter By: </p>
       {/* buttons to sort the products based on type. changes the value of filtertype based on user input wich will return an array of filtered products */}
       <div>
         <Button className="custom-button" onClick={() => setFilterType("all")}>
